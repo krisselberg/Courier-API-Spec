@@ -1,0 +1,27 @@
+summary: Begin authentication with a third-party provider
+operationId: authInitiate
+tags:
+  - Couriers Authentication
+parameters:
+  - name: provider
+    in: path
+    description: Name of the third-party authentication provider (e.g., Google, Apple)
+    required: true
+    schema:
+      type: string
+      enum: [Google, Apple]  # Add other providers as needed
+responses:
+  '302':
+    description: Redirection to the third-party provider's authentication page
+    headers:
+      Location:
+        description: URL to which the user will be redirected for authentication
+        schema:
+          type: string
+          format: uri
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

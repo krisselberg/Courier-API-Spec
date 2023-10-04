@@ -1,0 +1,41 @@
+summary: Set driver's availability status
+operationId: setAvailability
+tags:
+  - Couriers Availability
+requestBody:
+  description: Availability status
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          availability:
+            type: string
+            enum: [online, offline]
+            description: Driver's availability status
+        required:
+          - availability
+responses:
+  '200':
+    description: Availability status successfully updated
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Availability status updated successfully'
+  '400':
+    description: Bad request (e.g., invalid data)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

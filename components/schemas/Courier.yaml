@@ -1,0 +1,56 @@
+Courier:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: Unique identifier for the courier
+    first_name:
+      type: string
+      description: First name of the courier
+    last_name:
+      type: string
+      description: Last name of the courier
+    email:
+      type: string
+      format: email
+      description: Email address of the courier
+    password:
+      type: string
+      description: Hashed password of the courier
+      writeOnly: true
+    cell_phone_number:
+      type: string
+      format: phone-number
+      description: Contact phone number of the courier
+    availability:
+      type: boolean
+      description: Indicates if the courier is available
+    order_setting:
+      type: string
+      description: Setting determining how the courier handles orders
+      enum:
+        - auto_accept
+        - auto_reject
+        - manual
+    earnings:
+      $ref: '#/components/schemas/Earnings'
+      description: Reference to the earnings model for the courier
+     created_at:
+      type: string
+      format: date-time
+      description: Date and time when the courier profile was created
+    updated_at:
+      type: string
+      format: date-time
+      description: Date and time when the courier profile was last updated
+  required:
+    - id
+    - first_name
+    - last_name
+    - email
+    # password is not required for third-party authentication
+    # cell phone number not required for Matrix decentralized communications
+    - availability
+    - created_at
+    - updated_at

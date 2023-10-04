@@ -1,0 +1,29 @@
+summary: Get courier earnings
+description: Provides a detailed breakdown of a courier's earnings.
+parameters:
+  - name: courier_id
+    in: path
+    description: ID of the courier
+    required: true
+    schema:
+      type: string
+      format: uuid
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Earnings'
+  '404':
+    description: Courier not found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Internal server error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

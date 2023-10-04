@@ -1,0 +1,40 @@
+summary: Handle callback from Stripe with authorization code
+description: Endpoint to handle the redirection back from Stripe after the user has authorized (or denied) our application's access. Contains the authorization code needed to fetch the user's Stripe ID.
+tags:
+  - Stripe
+  - Payments
+parameters:
+  - name: code
+    in: query
+    description: Authorization code from Stripe
+    required: true
+    schema:
+      type: string
+  - name: state
+    in: query
+    description: An arbitrary string attached to the redirect URL for maintaining state across the authorization and redirect flow.
+    schema:
+      type: string
+responses:
+  '200':
+    description: Successfully connected with Stripe
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            stripe_user_id:
+              type: string
+              description: The Stripe user ID associated with the connected account
+  '400':
+    description: Error during Stripe Connect flow
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Internal server error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

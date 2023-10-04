@@ -1,0 +1,86 @@
+openapi: '3.0.0'
+info:
+  title: 'Courier API Protocol'
+  description: A dedicated set of communication endpoints designed to facilitate interactions between delivery couriers and the associated order management system
+  version: '0.0.0'
+  contact: 
+    email: kselberg@princeton.edu
+security:
+  - NodeAuth: []
+
+paths:
+  /couriers:
+    get:
+      $ref: './paths/couriers/GetCouriers.yaml'
+    post:
+      $ref: './paths/couriers/CreateCourier.yaml'
+  /couriers/login:
+    post:
+      $ref: './paths/couriers/Login.yaml'
+  /couriers/logout:
+    post:
+      $ref: './paths/couriers/Logout.yaml'
+  /couriers/password-reset/request:
+    post:
+      $ref: './paths/couriers/PasswordResetRequest.yaml'
+  /couriers/password-reset:
+    post:
+      $ref: './paths/couriers/PasswordReset.yaml'
+  /couriers/auth/{provider}/initiate:
+    get: 
+      $ref: './paths/couriers/AuthInitiate.yaml'
+  /couriers/auth/{provider}/callback:
+    get:
+      $ref: './paths/couriers/AuthCallback.yaml'
+  /couriers/availability:
+    patch:
+      $ref: './paths/couriers/SetAvailability.yaml'
+  /orders:
+    get:
+      $ref: './paths/orders/GetOrders.yaml'
+  /orders/{order_id}/accept:
+    patch:
+      $ref: './paths/orders/AcceptOrder.yaml'
+  /orders/{order_id}/reject:
+    patch:
+      $ref: './paths/orders/RejectOrder.yaml'
+  /couriers/order-setting:
+    patch:
+      $ref: './paths/couriers/SetOrderSetting.yaml'
+  /payments/stripe/connect/initiate:
+    get:
+      $ref: './paths/payments/stripe/ConnectInitiate.yaml'
+  /payments/stripe/connect/callback:
+    get:
+      $ref: './paths/payments/stripe/ConnectCallback.yaml'
+  /couriers/{courier_id}/earnings:
+    get:
+      $ref: './paths/couriers/GetEarnings.yaml'
+  /couriers/{courier_id}/earnings/receive:
+    post:
+      $ref: './paths/couriers/ReceiveEarnings.yaml'
+  /orders/{order_id}:
+    get:
+      $ref: './paths/orders/GetOrderInfo.yaml'
+  /orders/{order_id}/navigate:
+    get:
+      $ref: './paths/orders/GetNavigationLink.yaml'
+  /orders/{order_id}/contact:
+    post:
+      $ref: './paths/orders/Contact.yaml'
+  /orders/{order_id}/confirm-delivery:
+    patch:
+      $ref: './paths/orders/ConfirmDelivery.yaml'
+components:
+  securitySchemes:
+    $ref: './components/securitySchemes.yaml'
+  schemas:
+    $ref: './components/schemas.yaml'
+  parameters: 
+    $ref: './components/parameters.yaml'
+  requestBodies: 
+    $ref: './components/requestBodies.yaml'
+  responses: 
+    $ref: './components/responses.yaml'
+  headers:
+    $ref: './components/headers.yaml'

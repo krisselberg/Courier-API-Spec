@@ -1,0 +1,42 @@
+Earnings:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: Unique identifier for the earnings entry.
+    driver_id:
+      type: string
+      format: uuid
+      description: Identifier linking to the associated driver.
+    total_earnings:
+      type: number
+      format: float
+      description: Total earnings of the driver.
+    pending_earnings:
+      type: number
+      format: float
+      description: Amount yet to be paid out or in the process of being paid.
+    received_earnings:
+      type: number
+      format: float
+      description: Amount that has been successfully paid out to the driver.
+    payout_method:
+      type: string
+      description: Method used for payouts (e.g., Bank Transfer, Stripe, PayPal).
+    created_at:
+      type: string
+      format: date-time
+      description: Date and time when the earnings entry was created.
+    updated_at:
+      type: string
+      format: date-time
+      description: Date and time when the earnings entry was last updated.
+  required:
+    - id
+    - driver_id
+    - total_earnings
+    - pending_earnings
+    - received_earnings
+    - created_at
+    - updated_at

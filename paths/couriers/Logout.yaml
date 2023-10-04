@@ -1,0 +1,41 @@
+summary: Log out a courier
+operationId: logout
+requestBody:
+  description: Token or session identifier required to log out
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          Token:
+            type: string
+            description: Authorization token or session identifier of the courier
+        required:
+          - Token
+responses:
+  '200':
+    description: Logout successful
+    headers:
+      X-Stamp:
+        $ref: '#/components/headers/X-Stamp'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Logged out successfully'
+  '401':
+    description: Unauthorized (e.g., invalid token or session identifier)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

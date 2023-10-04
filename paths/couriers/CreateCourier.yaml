@@ -1,0 +1,31 @@
+summary: Create a new courier
+operationId: createCourier
+requestBody:
+  description: Courier information to be added
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/Courier'
+responses:
+  '201':
+    description: Courier successfully created
+    headers:
+      X-Stamp: 
+        $ref: '#/components/headers/X-Stamp'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Courier'
+  '400':
+    description: Bad request (e.g. validation error)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

@@ -1,0 +1,86 @@
+Order:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: Unique identifier for the order
+    customer_id:
+      type: string
+      format: uuid
+      description: Reference to the customer model
+    merchant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the merchant
+        name:
+          type: string
+          description: Name of the merchant
+        contact_email:
+          type: string
+          format: email
+          description: Contact email for the merchant
+        contact_phone:
+          type: string
+          format: phone-number
+          description: Contact phone number for the merchant
+    driver_id:
+      type: string
+      format: uuid
+      description: Reference to the driver model
+      nullable: true
+    status:
+      type: string
+      description: Current status of the order
+      enum:
+        - Pending
+        - Accepted
+        - Rejected
+        - Delivered
+    order_details:
+      type: object
+      description: Details of the order, including items, quantity, price, and comments
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              quantity:
+                type: integer
+              price:
+                type: number
+              format: float
+        customer_comments:
+          type: string
+        merchant_comments:
+          type: string
+    pickup_location:
+      type: string
+      description: Location where the order should be picked up
+    dropoff_location:
+      type: string
+      description: Location where the order
+    sequence:
+      type: array
+      items:
+        type: string
+      description: Sequence of events for the order
+      example: ["Pickup at Merchant A", "Drop off at Customer B", "Pickup at Merchant C"]
+  required:
+    - id
+    - customer_id
+    - merchant
+    - status
+    - order_details
+    - pickup_location
+    - dropoff_location
+    - pickup_time
+    - dropoff_time
+    - created_at
+    - updated_at

@@ -1,0 +1,47 @@
+summary: Reject a specific order
+tags:
+  - Orders
+parameters:
+  - name: order_id
+    in: path
+    description: ID of the order to reject
+    required: true
+    schema:
+      type: string
+      format: uuid
+requestBody:
+  description: Reason for rejecting the order
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          rejection_comments:
+            type: string
+            description: Comments or reasons for rejecting the order
+responses:
+  '200':
+    description: Order successfully rejected
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Order'
+  '400':
+    description: Invalid request parameters
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Order not found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

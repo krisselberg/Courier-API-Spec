@@ -1,0 +1,13 @@
+description: A catalog of couriers
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        couriers:
+          type: array
+          description: an array of couriers
+          items:
+            $ref: '#/components/schemas/Courier'
+        pagination:
+          $ref: '#/components/schemas/Pagination'

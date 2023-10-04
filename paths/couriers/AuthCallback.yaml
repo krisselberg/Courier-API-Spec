@@ -1,0 +1,43 @@
+summary: Handle the redirection from the third-party provider
+operationId: authCallback
+tags:
+  - Couriers Authentication
+parameters:
+  - name: provider
+    in: path
+    description: Name of the third-party authentication provider (e.g., Google, Apple)
+    required: true
+    schema:
+      type: string
+      enum: [Google, Apple]  # Add other providers as needed
+  - name: token
+    in: query
+    description: Token or code provided by the third-party provider to fetch user details
+    required: true
+    schema:
+      type: string
+responses:
+  '200':
+    description: Successful authentication and user is logged in
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Successfully authenticated and logged in'
+            user:
+              $ref: '#/components/schemas/Courier'
+  '401':
+    description: Unauthorized (e.g., invalid token or authentication failed)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

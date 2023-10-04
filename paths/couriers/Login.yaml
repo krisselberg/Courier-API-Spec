@@ -1,0 +1,47 @@
+summary: Log in a courier
+operationId: login
+requestBody:
+  description: Credentials required to log in
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          Email:
+            type: string
+            format: email
+            description: Email address of the courier
+          Password:
+            type: string
+            format: password
+            description: Password of the courier
+        required:
+          - Email
+          - Password
+responses:
+  '200':
+    description: Login successful
+    headers:
+      X-Stamp:
+        $ref: '#/components/headers/X-Stamp'
+      Authorization:
+        description: Authorization token for the logged-in courier
+        schema:
+          type: string
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Courier'
+  '401':
+    description: Unauthorized (e.g., invalid credentials)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

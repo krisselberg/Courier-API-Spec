@@ -1,0 +1,33 @@
+summary: Receive earnings via Stripe
+description: Initiate a payout to the courier's connected Stripe account.
+parameters:
+  - name: courier_id
+    in: path
+    description: ID of the courier
+    required: true
+    schema:
+      type: string
+      format: uuid
+responses:
+  '200':
+    description: Payout initiated successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            payout_id:
+              type: string
+              description: The ID of the initiated payout in Stripe
+  '404':
+    description: Courier or Stripe account not found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Internal server error or Stripe API error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

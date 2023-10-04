@@ -1,0 +1,20 @@
+summary: Redirect user to Stripe for Connect flow
+description: Initiates the Stripe Connect authorization process by redirecting the user to Stripe's authorization page.
+tags:
+  - Stripe
+  - Payments
+responses:
+  '302':
+    description: Redirect to Stripe for authorization
+    headers:
+      Location:
+        description: The URL to redirect to (Stripe's authorization URL)
+        schema:
+          type: string
+          format: uri
+  '500':
+    description: Internal server error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
