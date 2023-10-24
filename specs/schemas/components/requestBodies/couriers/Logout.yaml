@@ -1,0 +1,12 @@
+description: Token or session identifier required to log out
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        Token:
+          type: string
+          description: Authorization token or session identifier of the courier
+      required:
+        - Token

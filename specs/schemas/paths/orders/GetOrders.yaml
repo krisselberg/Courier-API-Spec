@@ -1,0 +1,62 @@
+summary: Fetch orders with advanced filtering and sorting
+operationId: getOrders
+tags:
+  - Order Management
+parameters:
+  - name: driverId
+    in: query
+    description: ID of the driver to filter the orders
+    required: false
+    schema:
+      type: string
+  - name: sortBy
+    in: query
+    description: Criteria to sort the orders by (e.g., distance, date)
+    required: false
+    schema:
+      type: string
+      enum:
+        - distance
+        - date
+  - name: sortOrder
+    in: query
+    description: Direction of the sorting (e.g., asc, desc)
+    required: false
+    schema:
+      type: string
+      enum:
+        - asc
+        - desc
+  - name: maxDistance
+    in: query
+    description: Maximum distance for filtering orders (useful with distance sorting)
+    required: false
+    schema:
+      type: number
+      format: float
+  - $ref: '#/components/parameters/PaginationPageQueryParam'
+  - $ref: '#/components/parameters/PaginationPageOffsetQueryParam'
+responses:
+  '200':
+    description: Successfully fetched orders based on the provided criteria
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            orders:
+              type: array
+              items:
+                $ref: '#/components/schemas/Order'
+  '404':
+    description: No orders found for the provided criteria
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

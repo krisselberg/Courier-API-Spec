@@ -1,0 +1,33 @@
+summary: Update courier's settings
+operationId: updateCourierSettings
+requestBody:
+  $ref: '#/components/requestBodies/CourierSettings'
+responses:
+  '200':
+    description: Settings updated successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Settings updated successfully'
+  '400':
+    description: Bad request (e.g., invalid data)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Courier not found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

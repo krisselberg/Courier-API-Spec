@@ -1,0 +1,30 @@
+summary: Log out a courier
+operationId: logout
+requestBody:
+  $ref: '#/components/requestBodies/Logout.yaml'
+responses:
+  '200':
+    description: Logout successful
+    headers:
+      X-Stamp:
+        $ref: '#/components/headers/X-Stamp'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Logged out successfully'
+  '401':
+    description: Unauthorized (e.g., invalid token or session identifier)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

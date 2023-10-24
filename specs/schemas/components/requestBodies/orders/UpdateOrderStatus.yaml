@@ -1,0 +1,15 @@
+content:
+  application/json:
+    schema:
+      description: Details for accepting an order along with driver's comments
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Comments or additional details provided by the driver regarding the order acceptance
+        status:
+          type: string
+          description: Status update for the order acceptance, e.g., "Accepted" or "Declined"
+          enum: ["Accepted", "Declined"]
+      required:
+        - status

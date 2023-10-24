@@ -1,0 +1,20 @@
+# orders
+ConfirmDelivery:
+    $ref: './requestBodies/ConfirmDelivery.yaml'
+
+Contact:
+    $ref: './requestBodies/Contact.yaml'
+
+GetMerchantCatalog:
+    $ref: './requestBodies/GetMerchantCatalog.yaml'
+
+# payments
+CreatePaymentIntent: 
+    $ref: './requestBodies/CreatePaymentIntent.yaml'
+
+# couriers
+CreateDeliveryQuote:
+    $ref: './requestBodies/CreateDeliveryQuote.yaml'
+
+CreateDelivery:
+    $ref: './requestBodies/CreateDelivery.yaml'

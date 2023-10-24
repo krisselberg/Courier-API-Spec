@@ -1,0 +1,29 @@
+summary: Contact associated party (customer or merchant) related to an order.
+description: Endpoint to initiate contact with either the customer or merchant associated with an order.
+operationId: contactParty
+parameters:
+  - name: order_id
+    in: path
+    description: Unique ID of the order.
+    required: true
+    schema:
+      type: string
+      format: uuid
+  - name: party
+    in: query
+    description: Party to be contacted (either 'customer' or 'merchant').
+    required: true
+    schema:
+      type: string
+      enum:
+        - customer
+        - merchant
+requestBody:
+  $ref: '#/components/requestBodies/Contact.yaml'
+responses:
+  '200':
+    description: Contact initiated successfully.
+  '400':
+    description: Invalid input (e.g., missing or invalid parameters).
+  '404':
+    description: Order not found.

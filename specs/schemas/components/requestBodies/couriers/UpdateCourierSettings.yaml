@@ -1,0 +1,35 @@
+description: Courier's availability and order settings
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        availability:
+          type: string
+          enum: [online, offline]
+          description: Driver's availability status
+        order_setting:
+          type: string
+          description: Setting determining how the courier handles orders
+          enum:
+            - auto_accept
+            - auto_reject
+            - manual
+        distance_limit: 
+          type: number
+          description: Maximum distance the courier is willing to travel for an order.
+        vehicle_type:
+          type: string
+          description: Specifies the type of vehicle the courier uses.
+          enum:
+            - bicycle
+            - motorcycle
+            - car
+            - van
+        minimum_payout:
+          type: number
+          description: The minimum amount the courier wants to be paid for a delivery.
+      required:
+        - availability
+        - order_setting
