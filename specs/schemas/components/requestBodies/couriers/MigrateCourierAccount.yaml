@@ -1,0 +1,21 @@
+description: Details for account migration
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        target_node:
+          type: string
+          format: uri
+          description: URI of the target node to which the account should be migrated.
+        authorization_token:
+          type: string
+          description: Token or credential to authorize the migration. This might be a token issued by the current node.
+        migration_data_encryption_key:
+          type: string
+          format: base64
+          description: Key used to encrypt sensitive migration data, ensuring privacy and security during transit.
+      required:
+        - target_node
+        - authorization_token

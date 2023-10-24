@@ -1,5 +1,5 @@
-summary: get couriers
-operationId: getCourier
+summary: get deliveries
+operationId: getDeliveries
 parameters:
   - $ref: '#/components/parameters/PaginationPageQueryParam'
   - $ref: '#/components/parameters/PaginationPageOffsetQueryParam'
@@ -17,7 +17,7 @@ responses:
             orders:
               type: array
               items:
-                $ref: '#/components/schemas/Courier'
+                $ref: '#/components/schemas/ObfuscatedDelivery'
             pagination:
               $ref: '#/components/schemas/Pagination'
   404:

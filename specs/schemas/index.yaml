@@ -15,6 +15,9 @@ paths:
       $ref: './paths/couriers/GetCouriers.yaml'
     post:
       $ref: './paths/couriers/CreateCourier.yaml'
+  /couriers/{courier_id}:
+    get:
+      $ref: './paths/couriers/GetCourier.yaml'
   /couriers/login:
     post:
       $ref: './paths/couriers/Login.yaml'
@@ -33,36 +36,39 @@ paths:
   /couriers/auth/{provider}/callback:
     get:
       $ref: './paths/couriers/AuthCallback.yaml'
-  /couriers/availability:
+  /couriers/update-settings:
     patch:
-      $ref: './paths/couriers/SetAvailability.yaml'
-  /orders:
+      $ref: './paths/couriers/UpdateCourierSettings.yaml'
+  /couriers/migrate-account:
+    patch:
+      $ref: './paths/couriers/MigrateCourierAccount.yaml'
+  /couriers/earnings:
     get:
-      $ref: './paths/orders/GetOrders.yaml'
-  /orders/{order_id}/accept:
-    patch:
-      $ref: './paths/orders/AcceptOrder.yaml'
-  /orders/{order_id}/reject:
-    patch:
-      $ref: './paths/orders/RejectOrder.yaml'
-  /couriers/order-setting:
-    patch:
-      $ref: './paths/couriers/SetOrderSetting.yaml'
+      $ref: './paths/couriers/GetEarnings.yaml'
+  /couriers/earnings/receive:
+    post:
+      $ref: './paths/couriers/ReceiveEarnings.yaml'
+  /couriers/deliveries:
+    get:
+      $ref: './paths/couriers/GetDeliveries.yaml'
+  /couriers/deliveries/{delivery_id}:
+    get:
+      $ref: './paths/couriers/GetDelivery.yaml'
   /payments/stripe/connect/initiate:
     get:
       $ref: './paths/payments/stripe/ConnectInitiate.yaml'
   /payments/stripe/connect/callback:
     get:
       $ref: './paths/payments/stripe/ConnectCallback.yaml'
-  /couriers/{courier_id}/earnings:
+  /orders:
     get:
-      $ref: './paths/couriers/GetEarnings.yaml'
-  /couriers/{courier_id}/earnings/receive:
-    post:
-      $ref: './paths/couriers/ReceiveEarnings.yaml'
+      $ref: './paths/orders/GetOrders.yaml'
   /orders/{order_id}:
     get:
       $ref: './paths/orders/GetOrderInfo.yaml'
+  /orders/{order_id}/update-status:
+    patch:
+      $ref: './paths/orders/UpdateOrderStatus.yaml'
   /orders/{order_id}/navigate:
     get:
       $ref: './paths/orders/GetNavigationLink.yaml'
@@ -81,7 +87,5 @@ components:
     $ref: './components/parameters.yaml'
   requestBodies: 
     $ref: './components/requestBodies.yaml'
-  responses: 
-    $ref: './components/responses.yaml'
   headers:
     $ref: './components/headers.yaml'

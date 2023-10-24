@@ -1,5 +1,5 @@
-title: Customer Location
-description: Information about a customers location
+title: Merchant Location
+description: Information about a merchant's location
 type: object
 properties:
     location: 

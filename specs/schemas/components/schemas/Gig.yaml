@@ -1,0 +1,154 @@
+type: object
+description: Details about a gig assignment (based on the Argyle API Documentation https://argyle.com/docs/api-reference/gigs)
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique ID of the gig assignment
+  account:
+    type: string
+    format: uuid
+    description: Unique ID of the account associated with the gig assignment
+  employer:
+    type: string
+    description: Employer name
+  created_at:
+    type: string
+    format: date-time
+    description: Timestamp (ISO 8601) when the gig object was created
+  updated_at:
+    type: string
+    format: date-time
+    description: Timestamp (ISO 8601) when a property value of the gig object most recently changed
+  status:
+    type: string
+    enum: [scheduled, in_progress, completed, cancelled]
+    description: Current state of the gig assignment
+  type:
+    type: string
+    enum: [delivery, rideshare, hourly, services]
+    description: The type of gig assignment
+  task_count:
+    type: integer
+    description: Number of discrete tasks in the gig assignment
+  start_datetime:
+    type: string
+    format: date-time
+    description: Timestamp (ISO 8601) when the gig assignment started
+  end_datetime:
+    type: string
+    format: date-time
+    description: Timestamp (ISO 8601) when the gig assignment ended
+  all_datetimes:
+    type: object
+    properties:
+      request_at:
+        type: string
+        format: date-time
+      accept_at:
+        type: string
+        format: date-time
+      pickup_at:
+        type: string
+        format: date-time
+      dropoff_at:
+        type: string
+        format: date-time
+      cancel_at:
+        type: string
+        format: date-time
+      shift_start:
+        type: string
+        format: date-time
+      shift_end:
+        type: string
+        format: date-time
+  breaks:
+    type: array
+    items:
+      type: object
+      properties:
+        break_start:
+          type: string
+          format: date-time
+        break_end:
+          type: string
+          format: date-time
+  duration:
+    type: integer
+    description: Total time of the gig assignment (in seconds)
+  timezone:
+    type: string
+    description: Timezone (IANA) where the gig assignment took place
+  earning_type:
+    type: string
+    enum: [offer, work, incentive, adjustment, other]
+    description: The earnings category
+  start_location:
+    type: object
+    properties:
+      lat:
+        type: string
+        description: Latitude (ISO 6709) where the gig assignment started
+      lng:
+        type: string
+        description: Longitude (ISO 6709) where the gig assignment started
+      formatted_address:
+        type: string
+        description: Full address of where the gig assignment started
+  end_location:
+    type: object
+    properties:
+      lat_range:
+        type: string
+        description: Latitude (ISO 6709) range where the gig assignment ended (range determined by obfuscation parameter)
+      lng_range:
+        type: string
+        description: Longitude (ISO 6709) range where the gig assignment ended (range determined by obfuscation parameter)
+  distance:
+    type: string
+    description: Distance traveled during the gig assignment
+  distance_unit:
+    type: string
+    enum: [miles, km]
+    description: Unit of the distance traveled
+  metadata:
+    type: object
+    description: Additional, non-categorized information
+  circumstances:
+    type: object
+    description: Metadata specific to the gig platform
+  income:
+    type: object
+    properties:
+      currency:
+        type: string
+        description: Currency code (ISO 4217)
+      total_charge:
+        type: string
+      fees:
+        type: string
+      total:
+        type: string
+      pay:
+        type: string
+      tips:
+        type: string
+      bonus:
+        type: string
+      other:
+        type: string
+  income_rates:
+    type: object
+    properties:
+      hour:
+        type: string
+      mile:
+        type: string
+required:
+  - id
+  - account
+  - employer
+  - created_at
+  - status
+  - type

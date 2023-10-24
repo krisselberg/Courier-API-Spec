@@ -1,0 +1,22 @@
+# comments.yaml
+title: Comments
+description: Comments on a merchant, address, or customer provided by other users
+type: array
+items:
+  type: object
+  properties:
+    date:
+      type: string
+      format: date-time
+      description: The date and time when the comment was added.
+    author_id:
+      type: string
+      description: Identifier of the person (driver/restaurant) adding the comment.
+    content:
+      type: string
+      maxLength: 1000
+      description: Text content of the comment.
+  required:
+    - date
+    - author
+    - content

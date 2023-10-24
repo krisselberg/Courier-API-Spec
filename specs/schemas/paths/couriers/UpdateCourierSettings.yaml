@@ -1,7 +1,7 @@
 summary: Update courier's settings
 operationId: updateCourierSettings
 requestBody:
-  $ref: '#/components/requestBodies/CourierSettings'
+  $ref: '#/components/requestBodies/UpdateCourierSettings'
 responses:
   '200':
     description: Settings updated successfully

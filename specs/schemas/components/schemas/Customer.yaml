@@ -15,12 +15,11 @@ properties:
     maxLength: 100
   address: 
     $ref: '#/components/schemas/CustomerLocation'
-  cell_phone_number:
-    description: A publicly listed cell phone number for the merchant.
-    $ref: '#/components/schemas/CellPhone'
   email_address:
     description: The email address associated with the customer profile.
     type: string
+  comments:
+      $ref: '#/components/schemas/Comments'
 required:
   - id
   - first_name

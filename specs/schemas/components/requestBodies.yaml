@@ -1,20 +1,28 @@
-# orders
-ConfirmDelivery:
-    $ref: './requestBodies/ConfirmDelivery.yaml'
-
-Contact:
-    $ref: './requestBodies/Contact.yaml'
-
-GetMerchantCatalog:
-    $ref: './requestBodies/GetMerchantCatalog.yaml'
-
-# payments
-CreatePaymentIntent: 
-    $ref: './requestBodies/CreatePaymentIntent.yaml'
-
 # couriers
-CreateDeliveryQuote:
-    $ref: './requestBodies/CreateDeliveryQuote.yaml'
+MigrateCourierAccount:
+    $ref: './requestBodies/couriers/MigrateCourierAccount.yaml'
 
-CreateDelivery:
-    $ref: './requestBodies/CreateDelivery.yaml'
+Logout:
+    $ref: './requestBodies/couriers/Logout.yaml'
+
+Login:
+    $ref: './requestBodies/couriers/Login.yaml'
+
+PasswordResetRequest:
+    $ref: './requestBodies/couriers/PasswordResetRequest.yaml'
+
+UpdateCourierSettings:
+    $ref: './requestBodies/couriers/UpdateCourierSettings.yaml'
+
+PasswordReset:
+    $ref: './requestBodies/couriers/PasswordReset.yaml'
+
+# orders
+UpdateOrderStatus: 
+    $ref: './requestBodies/orders/UpdateOrderStatus.yaml'
+
+ConfirmDelivery: 
+    $ref: './requestBodies/orders/ConfirmDelivery.yaml'
+
+Contact: 
+    $ref: './requestBodies/orders/Contact.yaml'

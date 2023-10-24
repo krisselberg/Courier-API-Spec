@@ -1,7 +1,5 @@
 summary: Fetch orders with advanced filtering and sorting
 operationId: getOrders
-tags:
-  - Order Management
 parameters:
   - name: driverId
     in: query

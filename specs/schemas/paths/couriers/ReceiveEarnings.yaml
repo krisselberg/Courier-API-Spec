@@ -1,13 +1,5 @@
 summary: Receive earnings via Stripe
 description: Initiate a payout to the courier's connected Stripe account.
-parameters:
-  - name: courier_id
-    in: path
-    description: ID of the courier
-    required: true
-    schema:
-      type: string
-      format: uuid
 responses:
   '200':
     description: Payout initiated successfully

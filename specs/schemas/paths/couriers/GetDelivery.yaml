@@ -1,25 +1,21 @@
-summary: get couriers
-operationId: getCourier
+summary: get a delivery
 parameters:
-  - $ref: '#/components/parameters/PaginationPageQueryParam'
-  - $ref: '#/components/parameters/PaginationPageOffsetQueryParam'
+  - name: delivery_id
+    in: path
+    description: ID of the delivery to be retrieved
+    required: true
+    schema:
+      type: string
 responses:
   '200':
-    description: Successful response
+    description: Successfully retrieved courier details.
     headers:
       X-Stamp: 
         $ref: '#/components/headers/X-Stamp'
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            orders:
-              type: array
-              items:
-                $ref: '#/components/schemas/Courier'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
+          $ref: '#/components/schemas/ObfuscatedDelivery'
   404:
     description: No data found for the provided value
     content:

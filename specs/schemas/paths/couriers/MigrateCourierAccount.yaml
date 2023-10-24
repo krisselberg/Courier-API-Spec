@@ -1,0 +1,37 @@
+summary: Migrate a courier's account to another node
+operationId: migrateAccount
+requestBody:
+  $ref: '#/components/requestBodies/MigrateCourierAccount.yaml'
+responses:
+  '200':
+    description: Account migration successful
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Account migrated successfully to the specified node.'
+            target_node:
+              type: string
+              format: uri
+              description: Confirmation of the target node URI.
+  '400':
+    description: Bad request (e.g., invalid node URI, expired token)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized (e.g., invalid or missing authorization token)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

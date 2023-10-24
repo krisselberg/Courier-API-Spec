@@ -1,5 +1,5 @@
 summary: Update order status of an order
-operationId: updateOrderStatus
+operationId: updateStatus
 parameters:
   - name: order_id
     in: path
