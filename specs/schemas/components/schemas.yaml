@@ -134,8 +134,11 @@ CartCatalogItemModifierId:
 Customer:
     $ref: './schemas/Customer.yaml'
 
-CustomerLocation:
-    $ref: './schemas/CustomerLocation.yaml'
+# endpoint
+EndpointDetails:
+    $ref: './schemas/EndpointDetails.yaml'
+ObfuscatedEndpointDetails:
+    $ref: './schemas/ObfuscatedEndpointDetails.yaml'
 
 ## customer identifiers
 CustomerId:
@@ -148,8 +151,8 @@ BarcodeRequirement:
     $ref: './schemas/BarcodeRequirement.yaml'
 DeliverySignatureRequirement:
     $ref: './schemas/DeliverySignatureRequirement.yaml'
-DeliveryVerification:
-    $ref: './schemas/DeliveryVerification.yaml'
+DeliveryVerificationDetails:
+    $ref: './schemas/DeliveryVerificationDetails.yaml'
 DeliveryItem:
     $ref: './schemas/DeliveryItem.yaml'
 DeliveryQuote:

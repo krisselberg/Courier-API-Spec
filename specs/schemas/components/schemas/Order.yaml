@@ -37,8 +37,10 @@ properties:
     type: string
   billing_address:
     type: string
-  shipping_address:
-    type: string
+  pickup_address:
+    $ref: '#/components/schemas/EndpointDetails'
+  dropoff_address:
+    $ref: '#/components/schemas/EndpointDetails'
   order_status:
     type: string
     enum: [pending, awaiting_merchant, awaiting_courier, rejected_by_merchant]

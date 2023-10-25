@@ -1,15 +1,10 @@
 title: EndpointDetails
+description: Information about a customer or merchant's address
 type: object
 properties:
-  dropoff:
-    type: object
-    properties:
-      type:
-        type: string
-        enum: [merchant, customer]
-        description: Type of endpoint.
-      type_id:
-        type: string
-        description: Identifier of the type of the endpoint.
-      address:
-        $ref: '#/components/schemas/Address'
+    location: 
+      $ref: '#/components/schemas/Location'
+    coordinates: 
+      $ref: '#/components/schemas/Coordinates'
+    comments:
+      $ref: '#/components/schemas/Comments'

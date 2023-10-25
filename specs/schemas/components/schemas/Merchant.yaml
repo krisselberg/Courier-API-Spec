@@ -17,7 +17,7 @@ properties:
   merchant_group_id: 
     description: The ID of the Merchant Group that owns this Merchant
   address: 
-    $ref: '#/components/schemas/Address'
+    $ref: '#/components/schemas/EndpointDetails'
   logo:
     description: A user facing logo for the merchant.
     $ref: '#/components/schemas/ImageFile'

@@ -1,0 +1,20 @@
+title: ObfuscatedCoordinates
+description: Defines a latitudinal and longitudinal range in space based on a fixed obfuscation parameter
+type: object
+properties:
+  latitude_range:
+    type: array
+    items:
+      type: number
+      format: double
+    minItems: 2
+    maxItems: 2
+    description: The range of latitude coordinates, from start to end.
+  longitude_range:
+    type: array
+    items:
+      type: number
+      format: double
+    minItems: 2
+    maxItems: 2
+    description: The range of longitude coordinates, from start to end.
