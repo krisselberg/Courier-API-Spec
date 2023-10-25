@@ -1,4 +1,4 @@
-title: Delivery Verification
+title: Delivery Verification Details
 description: Defines whether a signature must be collected from an entity at a waypoint during a couriers journey.
 type: object
 properties: 

@@ -1,5 +1,5 @@
 title: Customer
-description: Defines details about a customer, such as contact details. This information is sent from a Buyer Supporting Node (BSN) to a Seller Supporting Node (SSN) during a customers payment intent.
+description: Defines details about a customer.
 type: object 
 properties:
   id:
@@ -9,21 +9,13 @@ properties:
     type: string
     description: The first name of the customer
     maxLength: 100
-  last_name:
-    type: string
-    description: The last name of the customer
-    maxLength: 100
-  address: 
+  home_address: 
     $ref: '#/components/schemas/CustomerLocation'
-  email_address:
-    description: The email address associated with the customer profile.
-    type: string
-  comments:
-      $ref: '#/components/schemas/Comments'
+  merchant_comments:
+    $ref: '#/components/schemas/Comments'
+  courier_comments:
+    $ref: '#/components/schemas/Comments'
 required:
   - id
   - first_name
-  - last_name
   - address
-  - cell_phone_number
-  - email

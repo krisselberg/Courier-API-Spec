@@ -4,40 +4,12 @@ properties:
   dropoff:
     type: object
     properties:
-      name:
+      type:
         type: string
-        description: Name of the person receiving the delivery.
-      phone_number:
+        enum: [merchant, customer]
+        description: Type of endpoint.
+      type_id:
         type: string
-        description: Contact phone number for the person receiving the delivery.
+        description: Identifier of the type of the endpoint.
       address:
-        type: string
-        description: Detailed address where the delivery is to be dropped off.
-      detailed_address:
-        type: object
-        description: Further breakdown of the delivery address, if needed.
-      notes:
-        type: string
-        description: General notes related to the dropoff.
-      seller_notes:
-        type: string
-        description: Notes from the seller concerning the delivery.
-      courier_notes:
-        type: string
-        description: Notes from the courier regarding the dropoff.
-      location:
-        type: object
-        description: Geographical location for the dropoff. 
-      verification_requirements:
-        type: object
-        description: Requirements for verifying the dropoff.
-      status:
-        type: string
-        description: Current status of the dropoff.
-      status_timestamp:
-        type: string
-        format: date-time
-        description: Timestamp corresponding to the current status of the dropoff.
-      external_store_id:
-        type: string
-        description: Identifier from an external system, presumably the store's system.
+        $ref: '#/components/schemas/Address'

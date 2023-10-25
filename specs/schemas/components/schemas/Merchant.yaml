@@ -1,6 +1,6 @@
 title: Merchant
 type: object 
-description: Defines details about a merchant and specifies information that a Buyer Supporting Node (BSN) can display to it's users.
+description: (Same as UTP https://github.com/Palette-Labs-Inc/protocol-specification) Defines details about a merchant and specifies information that a Buyer Supporting Node (BSN) can display to it's users.
 properties:
   id:
     type: string
@@ -16,10 +16,8 @@ properties:
     maxLength: 100
   merchant_group_id: 
     description: The ID of the Merchant Group that owns this Merchant
-  location: 
-    $ref: '#/components/schemas/Location'
-  coordinates: 
-    $ref: '#/components/schemas/Coordinates'
+  address: 
+    $ref: '#/components/schemas/Address'
   logo:
     description: A user facing logo for the merchant.
     $ref: '#/components/schemas/ImageFile'

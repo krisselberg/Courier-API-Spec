@@ -1,4 +1,4 @@
-title: EndpointDetails
+title: ObfuscatedEndpointDetails
 type: object
 properties:
   dropoff:

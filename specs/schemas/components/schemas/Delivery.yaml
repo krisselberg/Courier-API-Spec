@@ -33,14 +33,10 @@ properties:
   dropoff_ready:
     type: string
     format: date-time
-  external_id:
-    type: string
   fee:
     type: integer
   kind:
     type: string
-  live_mode:
-    type: boolean
   manifest:
     type: object
     properties:
@@ -60,7 +56,7 @@ properties:
       size:
         type: string
       dimensions:
-        $ref: '#/components/schemas/Dimensions'
+        $ref: '#/components/schemas/primitives/Dimensions'
       price:
         type: integer
       must_be_upright:
@@ -77,15 +73,10 @@ properties:
     format: date-time
   pickup_ready:
     type: string
-  related_deliveries:
-    type: object
-    properties:
-      id:
-        type: string
-      relationship:
-        type: string
   status:
     type: string
+    enum: [scheduled, in_progress, completed, cancelled] # from Argyle API
+    description: Current state of the gig assignment
   tip:
     type: integer
   tracking_url:
@@ -97,28 +88,89 @@ properties:
   updated:
     type: string
     format: date-time
-  uuid:
-    type: string
   return:
     $ref: '#/components/schemas/EndpointDetails'
-components:
-schemas:
-  Location:
+  start_datetime:
+    type: string
+    format: date-time
+    description: Timestamp (ISO 8601) when the gig assignment started
+  end_datetime:
+    type: string
+    format: date-time
+    description: Timestamp (ISO 8601) when the gig assignment ended
+  all_datetimes:
+    type: object
+    properties:
+      accept_at:
+        type: string
+        format: date-time
+      pickup_at:
+        type: string
+        format: date-time
+      dropoff_at:
+        type: string
+        format: date-time
+      cancel_at:
+        type: string
+        format: date-time
+  duration:
+    type: integer
+    description: Total time of the gig assignment (in seconds)
+  timezone:
+    type: string
+    description: Timezone (IANA) where the gig assignment took place
+  start_location:
     type: object
     properties:
       lat:
-        type: number
+        type: string
+        description: Latitude (ISO 6709) where the gig assignment started
       lng:
-        type: number
-  Dimensions:
+        type: string
+        description: Longitude (ISO 6709) where the gig assignment started
+      formatted_address:
+        type: string
+        description: Full address of where the gig assignment started
+  end_location:
     type: object
     properties:
-      length:
-        type: integer
-      height:
-        type: integer
-      depth:
-        type: integer
+      lat_range:
+        type: string
+        description: Latitude (ISO 6709) range where the gig assignment ended (range determined by obfuscation parameter)
+      lng_range:
+        type: string
+        description: Longitude (ISO 6709) range where the gig assignment ended (range determined by obfuscation parameter)
+  distance:
+    type: string
+    description: Distance traveled during the gig assignment
+  distance_unit:
+    type: string
+    enum: [miles, km]
+    description: Unit of the distance traveled
+  income:
+    type: object
+    properties:
+      currency:
+        type: string
+        description: Currency code (ISO 4217)
+      total_charge:
+        type: string
+      fees:
+        type: string
+      total:
+        type: string
+      pay:
+        type: string
+      tips:
+        type: string
+      bonus:
+        type: string
+      other:
+        type: string
+  verification_details:
+    $ref: '#/components/schemas/DeliveryVerificationDetails'
+components:
+schemas:
   VerificationDetails:
     type: object
     properties:
@@ -165,46 +217,3 @@ schemas:
             type: string
       completion_location:
         $ref: '#/components/schemas/Location'
-  EndpointDetails:
-    type: object
-    properties:
-      name:
-        type: string
-      phone_number:
-        type: string
-      address:
-        type: string
-      detailed_address:
-        type: object
-        properties:
-          street_address_1:
-            type: string
-          street_address_2:
-            type: string
-          city:
-            type: string
-          state:
-            type: string
-          zip_code:
-            type: string
-          country:
-            type: string
-      notes:
-        type: string
-      seller_notes:
-        type: string
-      courier_notes:
-        type: string
-      location:
-        $ref: '#/components/schemas/Location'
-      verification:
-        $ref: '#/components/schemas/VerificationDetails'
-      verification_requirements:
-        $ref: '#/components/schemas/VerificationDetails'
-      status:
-        type: string
-      status_timestamp:
-        type: string
-        format: date-time
-      external_store_id:
-        type: string
