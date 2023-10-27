@@ -4,7 +4,7 @@ description: Using [Uber Direct](https://developer.uber.com/docs/deliveries/api-
 properties:
   id:
     type: string
-  quote_id:
+  order_id:
     type: string
   complete:
     type: boolean

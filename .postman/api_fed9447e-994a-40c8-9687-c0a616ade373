@@ -16,6 +16,7 @@ rootDirectory = postman/collections
 files[] = {"path":"specs/schemas/components/headers.yaml","metaData":{}}
 files[] = {"path":"specs/schemas/components/parameters.yaml","metaData":{}}
 files[] = {"path":"specs/schemas/components/requestBodies.yaml","metaData":{}}
+files[] = {"path":"specs/schemas/components/requestBodies/couriers/CreateCourier.yaml","metaData":{}}
 files[] = {"path":"specs/schemas/components/requestBodies/couriers/Login.yaml","metaData":{}}
 files[] = {"path":"specs/schemas/components/requestBodies/couriers/Logout.yaml","metaData":{}}
 files[] = {"path":"specs/schemas/components/requestBodies/couriers/MigrateCourierAccount.yaml","metaData":{}}

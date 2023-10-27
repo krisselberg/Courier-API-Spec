@@ -1,12 +1,6 @@
 summary: Fetch orders with advanced filtering and sorting
 operationId: getOrders
 parameters:
-  - name: driverId
-    in: query
-    description: ID of the driver to filter the orders
-    required: false
-    schema:
-      type: string
   - name: sortBy
     in: query
     description: Criteria to sort the orders by (e.g., distance, date)

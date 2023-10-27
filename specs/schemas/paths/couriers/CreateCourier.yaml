@@ -6,7 +6,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: '#/components/schemas/Courier'
+        $ref: '#/components/requestBodies/CreateCourier'
 responses:
   '201':
     description: Courier successfully created

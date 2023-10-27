@@ -78,6 +78,7 @@ paths:
   /orders/{order_id}/confirm-delivery:
     patch:
       $ref: './paths/orders/ConfirmDelivery.yaml'
+  # Add update delivery endpoint
 components:
   securitySchemes:
     $ref: './components/securitySchemes.yaml'
