@@ -3,6 +3,16 @@ operationId: getDeliveries
 parameters:
   - $ref: '#/components/parameters/PaginationPageQueryParam'
   - $ref: '#/components/parameters/PaginationPageOffsetQueryParam'
+  - name: status
+    in: query
+    description: Filter deliveries by their status
+    required: false
+    schema:
+      type: string
+      enum:
+        - completed
+        - in-progress
+        - cancelled
 responses:
   '200':
     description: Successful response
@@ -17,7 +27,9 @@ responses:
             orders:
               type: array
               items:
-                $ref: '#/components/schemas/ObfuscatedDelivery'
+                oneOf:
+                  - $ref: '#/components/schemas/ObfuscatedDelivery' # if status=completed, for privacy
+                  - $ref: '#/components/schemas/Delivery' # if status=in-progress
             pagination:
               $ref: '#/components/schemas/Pagination'
   404:
