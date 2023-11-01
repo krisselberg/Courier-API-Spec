@@ -6,7 +6,7 @@ OAuth2:
       tokenUrl: https://example.com/oauth/token
       scopes:
         driver: Access to driver's actions
-NodeAuth:
-    type: apiKey
-    in: header
-    name: X-Stamp
+# NodeAuth:
+#     type: apiKey
+#     in: header
+#     name: X-Stamp

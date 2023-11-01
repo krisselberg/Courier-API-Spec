@@ -1,0 +1,46 @@
+summary: Update courier's order setting
+operationId: updateCourierOrderSetting
+requestBody:
+  description: Courier's order setting
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          order_setting:
+            type: string
+            description: Setting determining how the courier handles orders
+            enum:
+              - auto_accept
+              - auto_reject
+              - manual
+responses:
+  '200':
+    description: Courier order setting updated successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Courier order setting updated successfully'
+  '400':
+    description: Bad request (e.g., invalid data)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Courier not found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

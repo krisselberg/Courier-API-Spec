@@ -1,7 +1,5 @@
 summary: Handle the redirection from the third-party provider
 operationId: authCallback
-tags:
-  - Couriers Authentication
 parameters:
   - name: provider
     in: path

@@ -7,7 +7,10 @@ content:
       properties:
         availability:
           type: string
-          enum: [online, offline]
+          enum:
+            - online
+            - last_call
+            - offline
           description: Driver's availability status
         order_setting:
           type: string
@@ -27,9 +30,6 @@ content:
             - motorcycle
             - car
             - van
-        minimum_payout:
+        min_payout:
           type: number
           description: The minimum amount the courier wants to be paid for a delivery.
-      required:
-        - availability
-        - order_setting

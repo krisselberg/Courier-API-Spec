@@ -6,7 +6,6 @@ info:
   contact: 
     email: kselberg@princeton.edu
 security:
-  - NodeAuth: [] # API key passed in the header for specific node?
   - OAuth2: [courier]
 
 paths:
@@ -39,6 +38,12 @@ paths:
   /couriers/update-settings:
     patch:
       $ref: './paths/couriers/UpdateCourierSettings.yaml'
+  /couriers/settings/availabilty:
+    patch:
+      $ref: './paths/couriers/UpdateCourierAvailability.yaml'
+  /couriers/settings/order-setting:
+    patch:
+      $ref: './paths/couriers/UpdateCourierOrderSetting.yaml'
   /couriers/migrate-account:
     patch:
       $ref: './paths/couriers/MigrateCourierAccount.yaml'
@@ -78,7 +83,7 @@ paths:
   /orders/{order_id}/confirm-delivery:
     patch:
       $ref: './paths/orders/ConfirmDelivery.yaml'
-  # Add update delivery endpoint
+  # Add delivery endpoints
 components:
   securitySchemes:
     $ref: './components/securitySchemes.yaml'
