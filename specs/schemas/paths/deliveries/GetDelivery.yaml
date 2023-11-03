@@ -15,7 +15,9 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/ObfuscatedDelivery'
+          oneOf:
+            - $ref: '#/components/schemas/ObfuscatedDelivery' # if status=completed, for privacy
+            - $ref: '#/components/schemas/Delivery' # if status=in-progress
   404:
     description: No data found for the provided value
     content:

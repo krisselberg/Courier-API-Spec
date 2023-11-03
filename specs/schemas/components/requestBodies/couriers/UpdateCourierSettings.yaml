@@ -1,24 +1,10 @@
-description: Courier's availability and order settings
+description: Courier's settings
 required: true
 content:
   application/json:
     schema:
       type: object
       properties:
-        availability:
-          type: string
-          enum:
-            - online
-            - last_call
-            - offline
-          description: Driver's availability status
-        order_setting:
-          type: string
-          description: Setting determining how the courier handles orders
-          enum:
-            - auto_accept
-            - auto_reject
-            - manual
         distance_limit: 
           type: number
           description: Maximum distance the courier is willing to travel for an order.

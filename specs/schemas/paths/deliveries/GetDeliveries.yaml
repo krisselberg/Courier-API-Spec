@@ -24,7 +24,7 @@ responses:
         schema:
           type: object
           properties:
-            orders:
+            deliveries:
               type: array
               items:
                 oneOf:
