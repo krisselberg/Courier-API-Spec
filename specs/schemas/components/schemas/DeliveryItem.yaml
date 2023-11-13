@@ -1,14 +1,23 @@
-title: Delivery Item
-description: Represents a single item that is meant to travel with a courier during a delivery
+title: DeliveryItem
 type: object
 properties:
-    name: 
-        type: string
-        description: A description of an item.
-    quantity: 
-        description: The number of items.
-        minimum: 1
-        type: integer
-        format: int32
-    physical_attributes:
-        $ref: '#/components/schemas/PhysicalAttributes'
+  name:
+    type: string
+    description: The name or description of the individual item.
+  quantity:
+    type: integer
+    description: The quantity of the item.
+  size:
+    type: string
+    description: The size category of the item (e.g., small, medium, large).
+  dimensions:
+    $ref: '#/components/schemas/Dimensions'
+  price:
+    type: integer
+    description: The price or cost value of the individual item.
+  must_be_upright:
+    type: boolean
+    description: Indicates if the item must be kept upright during transport.
+  weight:
+    type: integer
+    description: The weight of the item.

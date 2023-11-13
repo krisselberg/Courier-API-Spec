@@ -1,0 +1,13 @@
+Tip:
+  type: object
+  description: A suggestion provided by a courier on handling a delivery with a specific party.
+  properties:
+    courier_id:
+      type: string
+      description: The unique identifier for the courier who made the suggestion.
+    tip_text:
+      type: string
+      description: The content of the suggestion made by the courier.
+    upvotes:
+      type: integer
+      description: The number of upvotes this suggestion has received from other couriers.

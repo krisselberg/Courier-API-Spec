@@ -1,0 +1,148 @@
+title: Completed Delivery
+type: object
+description: A delivery with obfuscated endpoint details for dropoff using [Uber Direct](https://developer.uber.com/docs/deliveries/api-reference/daas#tag/Delivery/paths/~1customers~1%7Bcustomer_id%7D~1deliveries/post) as reference
+properties:
+  id:
+    type: string
+  order_id:
+    type: string
+  courier_id:
+    type: string
+  merchant_id:
+    type: string
+  merchant_name:
+    type: string
+  merchant_phone_number:
+    type: string
+    description: "The merchant's contact phone number for queries related to the delivery."
+  status:
+    type: string
+    enum: [scheduled, in_progress, completed, cancelled] # from Argyle API
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
+  currency:
+    type: string
+  customer_notes_for_courier:
+    type: array
+    items:
+      type: string
+    description: Notes left by the customer regarding delivery handling, e.g., 'Leave at door'.
+  courier_notes_for_customer:
+    type: array
+    items:
+      type: string
+    description: Notes left by the courier regarding delivery handling, e.g., 'Hot'.
+  courier_tips_for_merchant:
+    type: array
+    items:
+      $ref: '#/components/schemas/Tip'
+    description: Tips left by past couriers regarding delivery handling with the merchant, e.g., 'Park in third-party lot'.
+  pickup:
+    $ref: '#/components/schemas/EndpointDetails'
+  dropoff:
+    $ref: '#/components/schemas/EndpointDetails'
+  items:
+      type: array
+      items:
+        $ref: '#/components/schemas/DeliveryItem'
+  undeliverable_action:
+    type: string
+    description: This denotes the course of action to take if the delivery cannot be completed. For instance, it could specify whether the item should be returned, left with a neighbor, or if another delivery attempt should be made.
+  undeliverable_reason:
+    type: string
+    description: If a delivery is undeliverable, this field would contain the reason why it could not be delivered, such as "recipient not at home," "address incorrect," or "unable to access the delivery location."
+  return:
+    $ref: '#/components/schemas/EndpointDetails'
+  income:
+    type: object
+    properties:
+      currency:
+        type: string
+        description: Currency code (ISO 4217)
+      total_charge:
+        type: string
+        description: The total amount charged before deductions from fees, tips, etc.
+      fees:
+        type: string
+        description: Any additional fees associated with the delivery, which could include service fees, handling fees, etc.
+      total:
+        type: string
+        description: The final total amount including all deductions charged to the customer.
+      pay:
+        type: string
+        description: The amount paid to the courier for completing the delivery (without tips).
+      tips:
+        type: string
+
+  # Fields for auditing later
+  # start_datetime:
+  #   type: string
+  #   format: date-time
+  #   description: Timestamp (ISO 8601) when the gig assignment started
+  # end_datetime:
+  #   type: string
+  #   format: date-time
+  #   description: Timestamp (ISO 8601) when the gig assignment ended
+  # all_datetimes:
+  #   type: object
+  #   properties:
+  #     accept_at:
+  #       type: string
+  #       format: date-time
+  #     pickup_at:
+  #       type: string
+  #       format: date-time
+  #     dropoff_at:
+  #       type: string
+  #       format: date-time
+  #     cancel_at:
+  #       type: string
+  #       format: date-time
+  # duration:
+  #   type: integer
+  #   description: Total time of the gig assignment (in seconds)
+  # timezone:
+  #   type: string
+  #   description: Timezone (IANA) where the gig assignment took place
+  # start_location:
+  #   type: object
+  #   properties:
+  #     lat:
+  #       type: string
+  #       description: Latitude (ISO 6709) where the gig assignment started
+  #     lng:
+  #       type: string
+  #       description: Longitude (ISO 6709) where the gig assignment started
+  #     formatted_address:
+  #       type: string
+  #       description: Full address of where the gig assignment started
+  # end_location:
+  #   type: object
+  #   properties:
+  #     lat_range:
+  #       type: string
+  #       description: Latitude (ISO 6709) range where the gig assignment ended (range determined by obfuscation parameter)
+  #     lng_range:
+  #       type: string
+  #       description: Longitude (ISO 6709) range where the gig assignment ended (range determined by obfuscation parameter)
+  # distance:
+  #   type: string
+  #   description: Distance traveled during the gig assignment
+  # distance_unit:
+  #   type: string
+  #   enum: [miles, km]
+  #   description: Unit of the distance traveled
+  # delivery_proof:
+  #   type: object
+  #   properties:
+  #     photo_url:
+  #       type: string
+  #       description: "URL of the photo serving as proof of delivery."
+  #     photo_id:
+  #       type: string
+  #       description: "A unique identifier for the photo if stored in a database."
+  

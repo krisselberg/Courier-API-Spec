@@ -53,12 +53,6 @@ paths:
   /couriers/earnings/receive:
     post:
       $ref: './paths/couriers/ReceiveEarnings.yaml'
-  /couriers/deliveries:
-    get:
-      $ref: './paths/couriers/GetDeliveries.yaml'
-  /couriers/deliveries/{delivery_id}:
-    get:
-      $ref: './paths/couriers/GetDelivery.yaml'
   /payments/stripe/connect/initiate:
     get:
       $ref: './paths/payments/stripe/ConnectInitiate.yaml'
@@ -83,7 +77,12 @@ paths:
   /orders/{order_id}/confirm-delivery:
     patch:
       $ref: './paths/orders/ConfirmDelivery.yaml'
-  # Add delivery endpoints
+  /deliveries:
+    get:
+      $ref: './paths/deliveries/GetDeliveries.yaml'
+  /deliveries/{delivery_id}:
+    get:
+      $ref: './paths/deliveries/GetDelivery.yaml'
 components:
   securitySchemes:
     $ref: './components/securitySchemes.yaml'
