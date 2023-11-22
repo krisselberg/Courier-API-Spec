@@ -1,49 +1,53 @@
-summary: get deliveries
-operationId: getDeliveries
+summary: Get earnings
+operationId: getEarnings
 parameters:
   - $ref: '#/components/parameters/PaginationPageQueryParam'
   - $ref: '#/components/parameters/PaginationPageOffsetQueryParam'
-  - name: status
+  - name: start_date
     in: query
-    description: Filter deliveries by their status
+    description: Start of the earnings date range
     required: false
     schema:
       type: string
-      enum:
-        - completed
-        - in_progress
-        - cancelled
+      format: date
+  - name: end_date
+    in: query
+    description: End of the earnings date range
+    required: false
+    schema:
+      type: string
+      format: date
+  - name: date
+    in: query
+    description: Specific day for earnings
+    required: false
+    schema:
+      type: string
+      format: date
 responses:
   '200':
     description: Successful response
     headers:
-      X-Stamp: 
+      X-Stamp:
         $ref: '#/components/headers/X-Stamp'
     content:
       application/json:
         schema:
           type: object
           properties:
-            deliveries:
+            earnings:
               type: array
               items:
-                oneOf:
-                  - $ref: '#/components/schemas/CompletedDelivery' # if status=completed, for privacy
-                  - $ref: '#/components/schemas/InProgressDelivery' # if status=in-progress
-                discriminator:
-                  propertyName: status
-                  mapping:
-                    completed: '#/components/schemas/CompletedDelivery'
-                    in_progress: '#/components/schemas/InProgressDelivery'
+                $ref: '#/components/schemas/EarningsRecord'
             pagination:
               $ref: '#/components/schemas/Pagination'
-  400:
-    description: Invalid status
+  '400':
+    description: Invalid request parameters
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-  500:
+  '500':
     description: Unexpected error
     content:
       application/json:

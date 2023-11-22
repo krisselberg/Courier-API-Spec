@@ -1,4 +1,4 @@
-title: Delivery
+title: InProgressDelivery
 type: object
 description: Using [Uber Direct](https://developer.uber.com/docs/deliveries/api-reference/daas#tag/Delivery/paths/~1customers~1%7Bcustomer_id%7D~1deliveries/post) as reference
 properties:
@@ -169,51 +169,3 @@ properties:
         type: string
   verification_details:
     $ref: '#/components/schemas/DeliveryVerificationDetails'
-components:
-schemas:
-  VerificationDetails:
-    type: object
-    properties:
-      signature:
-        type: object
-        properties:
-          image_url:
-            type: string
-          name:
-            type: string
-          signer_relationship:
-            type: string
-      barcodes:
-        type: array
-        items:
-          type: object
-          properties:
-            type:
-              type: string
-            value:
-              type: string
-            scan_result:
-              type: object
-              properties:
-                outcome:
-                  type: string
-                timestamp:
-                  type: string
-                  format: date-time
-      picture:
-        type: object
-        properties:
-          image_url:
-            type: string
-      identification:
-        type: object
-        properties:
-          min_age_verified:
-            type: boolean
-      pin_code:
-        type: object
-        properties:
-          entered:
-            type: string
-      completion_location:
-        $ref: '#/components/schemas/Location'

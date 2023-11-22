@@ -137,22 +137,22 @@ Customer:
 # endpoint
 EndpointDetails:
     $ref: './schemas/EndpointDetails.yaml'
-ObfuscatedEndpointDetails:
-    $ref: './schemas/ObfuscatedEndpointDetails.yaml'
 
 ## customer identifiers
 CustomerId:
     $ref: './schemas/Customer.yaml#/properties/id'
 
 # delivery
+InProgressDelivery:
+    $ref: './schemas/InProgressDelivery.yaml'
+CompletedDelivery:
+    $ref: './schemas/CompletedDelivery.yaml'
 IdentityRequirement:
     $ref: './schemas/IdentityRequirement.yaml'
 BarcodeRequirement:
     $ref: './schemas/BarcodeRequirement.yaml'
 DeliverySignatureRequirement:
     $ref: './schemas/DeliverySignatureRequirement.yaml'
-DeliveryVerificationDetails:
-    $ref: './schemas/DeliveryVerificationDetails.yaml'
 DeliveryItem:
     $ref: './schemas/DeliveryItem.yaml'
 DeliveryQuote:
@@ -161,3 +161,7 @@ DeliveryFeeComponent:
     $ref: './schemas/DeliveryFeeComponent.yaml'
 DeliveryWaypoint:
     $ref: './schemas/DeliveryWaypoint.yaml'
+
+# earnings
+EarningsRecord:
+    $ref: './schemas/EarningsRecord.yaml'

@@ -9,80 +9,88 @@ security:
   - OAuth2: [courier]
 
 paths:
-  /couriers:
-    get:
-      $ref: './paths/couriers/GetCouriers.yaml'
+  /auth/signup:
     post:
-      $ref: './paths/couriers/CreateCourier.yaml'
-  /couriers/{courier_id}:
+      $ref: './paths/auth/SignUp.yaml'
+  /auth/login:
+    post:
+      $ref: './paths/auth/Login.yaml'
+  /auth/{provider}/redirect:
+    get: 
+      $ref: './paths/auth/AuthRedirect.yaml'
+  /auth/{provider}/callback:
+    get:
+      $ref: './paths/auth/AuthCallback.yaml'
+  /auth/logout:
+    post:
+      $ref: './paths/auth/Logout.yaml'
+  /auth/request-password-reset:
+    get:
+      $ref: './paths/auth/PasswordResetRequest.yaml'
+  /auth/password-reset:
+    post:
+      $ref: './paths/auth/PasswordReset.yaml'
+  /couriers/me:
     get:
       $ref: './paths/couriers/GetCourier.yaml'
-  /couriers/login:
-    post:
-      $ref: './paths/couriers/Login.yaml'
-  /couriers/logout:
-    post:
-      $ref: './paths/couriers/Logout.yaml'
-  /couriers/password-reset/request:
-    post:
-      $ref: './paths/couriers/PasswordResetRequest.yaml'
-  /couriers/password-reset:
-    post:
-      $ref: './paths/couriers/PasswordReset.yaml'
-  /couriers/auth/{provider}/initiate:
-    get: 
-      $ref: './paths/couriers/AuthInitiate.yaml'
-  /couriers/auth/{provider}/callback:
-    get:
-      $ref: './paths/couriers/AuthCallback.yaml'
-  /couriers/update-settings:
+  /couriers/general:
     patch:
-      $ref: './paths/couriers/UpdateCourierSettings.yaml'
-  /couriers/settings/availabilty:
+      $ref: './paths/couriers/UpdateCourierGeneralSettings.yaml'
+  /couriers/availability:
     patch:
       $ref: './paths/couriers/UpdateCourierAvailability.yaml'
-  /couriers/settings/order-setting:
+  /couriers/order-setting:
     patch:
       $ref: './paths/couriers/UpdateCourierOrderSetting.yaml'
-  /couriers/migrate-account:
+  /couriers/node:
     patch:
-      $ref: './paths/couriers/MigrateCourierAccount.yaml'
-  /couriers/earnings:
+      $ref: './paths/couriers/UpdateCourierNode.yaml'
+  /couriers/side-panel:
     get:
-      $ref: './paths/couriers/GetEarnings.yaml'
-  /couriers/earnings/receive:
-    post:
-      $ref: './paths/couriers/ReceiveEarnings.yaml'
-  /payments/stripe/connect/initiate:
-    get:
-      $ref: './paths/payments/stripe/ConnectInitiate.yaml'
-  /payments/stripe/connect/callback:
-    get:
-      $ref: './paths/payments/stripe/ConnectCallback.yaml'
-  /orders:
-    get:
-      $ref: './paths/orders/GetOrders.yaml'
-  /orders/{order_id}:
-    get:
-      $ref: './paths/orders/GetOrderInfo.yaml'
-  /orders/{order_id}/update-status:
+      $ref: './paths/couriers/GetCourierSidePanel.yaml'
     patch:
-      $ref: './paths/orders/UpdateOrderStatus.yaml'
-  /orders/{order_id}/navigate:
+      $ref: './paths/couriers/UpdateCourierSidePanel.yaml'
+  /nodes:
     get:
-      $ref: './paths/orders/GetNavigationLink.yaml'
-  /orders/{order_id}/contact:
-    post:
-      $ref: './paths/orders/Contact.yaml'
-  /orders/{order_id}/confirm-delivery:
+      $ref: './paths/nodes/GetNodes.yaml'
+  /offers:
+    get:
+      $ref: './paths/offers/GetOffers.yaml'
+  /offers/{order_id}:
+    get:
+      $ref: './paths/offers/GetOffer.yaml'
     patch:
-      $ref: './paths/orders/ConfirmDelivery.yaml'
+      $ref: './paths/offers/UpdateOffer.yaml'
   /deliveries:
     get:
       $ref: './paths/deliveries/GetDeliveries.yaml'
   /deliveries/{delivery_id}:
     get:
       $ref: './paths/deliveries/GetDelivery.yaml'
+  /deliveries/{delivery_id}/items:
+    get:
+      $ref: './paths/deliveries/GetDeliveryItems.yaml'
+  /deliveries/{delivery_id}/status:
+    patch:
+      $ref: './paths/deliveries/UpdateDeliveryStatus.yaml'
+  /deliveries/{delivery_id}/merchant-comments/{comment_id}/upvote:
+    patch:
+      $ref: './paths/deliveries/UpdateDeliveryStatus.yaml'
+  /deliveries/{delivery_id}/contact-customer:
+    post:
+      $ref: './paths/deliveries/ContactCustomer.yaml'
+  /earnings:
+    get:
+      $ref: './paths/earnings/GetEarnings.yaml'
+  /payouts:
+    post:
+      $ref: './paths/payouts/RequestPayout.yaml'
+  /payouts/stripe/connect/initiate:
+    get:
+      $ref: './paths/payouts/stripe/ConnectInitiate.yaml'
+  /payouts/stripe/connect/callback:
+    get:
+      $ref: './paths/payouts/stripe/ConnectCallback.yaml'
 components:
   securitySchemes:
     $ref: './components/securitySchemes.yaml'

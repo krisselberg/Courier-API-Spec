@@ -42,9 +42,9 @@ properties:
       $ref: '#/components/schemas/Tip'
     description: Tips left by past couriers regarding delivery handling with the merchant, e.g., 'Park in third-party lot'.
   pickup:
-    $ref: '#/components/schemas/EndpointDetails'
+    $ref: '#/components/schemas/ObfuscatedCoordinates'
   dropoff:
-    $ref: '#/components/schemas/EndpointDetails'
+    $ref: '#/components/schemas/ObfuscatedCoordinates'
   items:
       type: array
       items:
@@ -56,7 +56,7 @@ properties:
     type: string
     description: If a delivery is undeliverable, this field would contain the reason why it could not be delivered, such as "recipient not at home," "address incorrect," or "unable to access the delivery location."
   return:
-    $ref: '#/components/schemas/EndpointDetails'
+    $ref: '#/components/schemas/ObfuscatedCoordinates'
   income:
     type: object
     properties:

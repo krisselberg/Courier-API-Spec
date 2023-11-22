@@ -1,8 +1,0 @@
-title: ObfuscatedEndpointDetails
-description: Information about a customer or merchant's address
-type: object
-properties:
-    obfuscated_coordinates: 
-      $ref: '#/components/schemas/ObfuscatedCoordinates'
-    comments:
-      $ref: '#/components/schemas/Comments'

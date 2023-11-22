@@ -1,0 +1,18 @@
+title: EarningsRecord
+type: object
+required:
+  - datetime
+  - merchant_name
+  - total_earnings
+properties:
+  datetime:
+    type: string
+    format: date-time
+    description: The date and time when the earnings were recorded.
+  merchant_name:
+    type: string
+    description: The name of the merchant for which the earnings are recorded.
+  total_earnings:
+    type: number
+    format: float
+    description: The total amount of money made during the specified earnings period.
