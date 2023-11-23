@@ -1,4 +1,4 @@
-title: DeliveryItem
+title: Item
 type: object
 properties:
   name:

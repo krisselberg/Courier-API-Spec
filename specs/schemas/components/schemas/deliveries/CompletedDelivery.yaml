@@ -8,13 +8,8 @@ properties:
     type: string
   courier_id:
     type: string
-  merchant_id:
-    type: string
-  merchant_name:
-    type: string
-  merchant_phone_number:
-    type: string
-    description: "The merchant's contact phone number for queries related to the delivery."
+  merchant:
+    $ref: '#/components/schemas/Merchant'
   status:
     type: string
     enum: [picked_up, dropped_off, cancelled]
@@ -24,8 +19,6 @@ properties:
   updated_at:
     type: string
     format: date-time
-  currency:
-    type: string
   customer_notes_for_courier:
     type: array
     items:
@@ -61,22 +54,21 @@ properties:
     type: object
     properties:
       currency:
-        type: string
-        description: Currency code (ISO 4217)
+        $ref: '#/components/schemas/CurrencyCode'
       total_charge:
-        type: string
+        $ref: '#/components/schemas/Money'
         description: The total amount charged before deductions from fees, tips, etc.
       fees:
-        type: string
+        $ref: '#/components/schemas/Money'
         description: Any additional fees associated with the delivery, which could include service fees, handling fees, etc.
       total:
-        type: string
+        $ref: '#/components/schemas/Money'
         description: The final total amount including all deductions charged to the customer.
       pay:
-        type: string
+        $ref: '#/components/schemas/Money'
         description: The amount paid to the courier for completing the delivery (without tips).
       tips:
-        type: string
+        $ref: '#/components/schemas/Money'
 
   # Fields for auditing later
   # start_datetime:

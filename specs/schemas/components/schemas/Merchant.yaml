@@ -2,35 +2,20 @@ title: Merchant
 type: object 
 description: (Same as UTP https://github.com/Palette-Labs-Inc/protocol-specification) Defines details about a merchant and specifies information that a Buyer Supporting Node (BSN) can display to it's users.
 properties:
-  id:
+  merchant_id:
     type: string
     description: A globally unique ID of the merchant in the Seller Supporting Node's (SSN) system
-  slug:
-    type: string
-    description: A globally unique, human readable identifier of the merchant. (useful for displaying in urls)
   merchant_category_code:
     $ref: '#/components/schemas/MerchantCategoryCode'
   name:
     type: string
     description: The public facing display name of the merchant.
     maxLength: 100
-  merchant_group_id: 
-    description: The ID of the Merchant Group that owns this Merchant
   address: 
     $ref: '#/components/schemas/EndpointDetails'
   logo:
     description: A user facing logo for the merchant.
     $ref: '#/components/schemas/ImageFile'
-  description:
-    type: string
-    description: A public facing description of the business to display to the buyer.
-    maxLength: 1024
-  country_code:
-    $ref: '#/components/schemas/CountryCode'
-  language_code:
-      $ref: '#/components/schemas/LanguageCode'
-  currency_code:
-    $ref: '#/components/schemas/CurrencyCode'
   status:
     type: string
     description: The merchant's status
@@ -48,15 +33,8 @@ properties:
     description: A publicly listed cell phone number for the merchant.
     $ref: '#/components/schemas/CellPhone'
 required:
-  - id
+  - merchant_id
   - name
-  - slug
-  - merchant_category_code
-  - merchant_name
   - marchant_logo
-  - description
-  - country
-  - language_code
-  - currency_code
   - status
   - operational_status

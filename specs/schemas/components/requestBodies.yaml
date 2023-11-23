@@ -29,4 +29,3 @@ UpdateCourierNode:
 UpdateCourierGeneralSettings:
     $ref: './requestBodies/couriers/UpdateCourierGeneralSettings.yaml'
 
-

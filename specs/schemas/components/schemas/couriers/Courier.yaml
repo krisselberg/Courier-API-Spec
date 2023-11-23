@@ -1,0 +1,76 @@
+type: object
+description: Details about a courier
+properties:
+  courier_id:
+    type: string
+    description: Unique identifier for the courier
+  first_name:
+    type: string
+    description: First name of the courier
+  last_name:
+    type: string
+    description: Last name of the courier
+  email:
+    type: string
+    format: email
+    description: Email address of the courier
+  node:
+    $ref: '#/components/schemas/Node'
+  availability:
+    type: string
+    enum: [online, offline]
+    description: Availability status of the courier
+  order_setting:
+    type: string
+    enum: [auto_accept, auto_reject, manual]
+    description: Setting determining how the courier handles orders
+  distance_limit:
+    type: number
+    format: float
+    description: Maximum distance the courier is willing to travel for an order
+  vehicle_type:
+    type: string
+    enum: [bicycle, motorcycle, car, van]
+    description: Specifies the type of vehicle the courier uses
+  minimum_payout:
+    type: number
+    format: float
+    description: The minimum amount the courier wants to be paid for a delivery
+  created_at:
+    type: string
+    format: date-time
+    description: The date and time when the courier account was created
+  updated_at:
+    type: string
+    format: date-time
+    description: The date and time when the courier information was last updated
+  # Merged properties from CourierGeneralSettings
+  delivery_polygon:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/delivery_polygon'
+  preferred_areas:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/preferred_areas'
+  shift_availability:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/shift_availability'
+  order_preferences:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/order_preferences'
+  food_preference:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/food_preference'
+  earnings_goals:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/earnings_goals'
+  delivery_speed:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/delivery_speed'
+  restaurant_types:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/restaurant_types'
+  cuisine_types:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/cuisine_types'
+  preferred_restaurant_partners:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/preferred_restaurant_partners'
+  specific_food_type_preferences:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/specific_food_type_preferences'
+  pay_rate:
+    $ref: '#/components/schemas/CourierGeneralSettings/properties/pay_rate'
+required:
+  - id
+  - firstName
+  - lastName
+  - email

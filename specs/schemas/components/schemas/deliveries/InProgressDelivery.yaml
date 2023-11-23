@@ -1,0 +1,73 @@
+title: InProgressDelivery
+type: object
+description: Using [Uber Direct](https://developer.uber.com/docs/deliveries/api-reference/daas#tag/Delivery/paths/~1customers~1%7Bcustomer_id%7D~1deliveries/post) as reference
+properties:
+  delivery_id:
+    type: string
+  order_id:
+    type: string
+  courier_id:
+    type: string
+  courier_name:
+    type: string
+  merchant:
+    $ref: '#/components/schemas/Merchant'
+  status:
+    type: string
+    enum: [picked_up, dropped_off, cancelled]
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
+  customer_notes_for_courier:
+    type: array
+    items:
+      type: string
+    description: Notes left by the customer regarding delivery handling, e.g., 'Leave at door'.
+  courier_notes_for_customer:
+    type: array
+    items:
+      type: string
+    description: Notes left by the courier regarding delivery handling, e.g., 'Hot'.
+  courier_tips_for_merchant:
+    type: array
+    items:
+      $ref: '#/components/schemas/Tip'
+    description: Tips left by past couriers regarding delivery handling with the merchant, e.g., 'Park in third-party lot'.
+  pickup:
+    $ref: '#/components/schemas/EndpointDetails'
+  dropoff:
+    $ref: '#/components/schemas/EndpointDetails'
+  items:
+      type: array
+      items:
+        $ref: '#/components/schemas/Item'
+  undeliverable_action:
+    type: string
+    description: This denotes the course of action to take if the delivery cannot be completed. For instance, it could specify whether the item should be returned, left with a neighbor, or if another delivery attempt should be made.
+  undeliverable_reason:
+    type: string
+    description: If a delivery is undeliverable, this field would contain the reason why it could not be delivered, such as "recipient not at home," "address incorrect," or "unable to access the delivery location."
+  return:
+    $ref: '#/components/schemas/EndpointDetails'
+  income:
+    type: object
+    properties:
+      currency:
+        $ref: '#/components/schemas/CurrencyCode'
+      total_charge:
+        $ref: '#/components/schemas/Money'
+        description: The total amount charged before deductions from fees, tips, etc.
+      fees:
+        $ref: '#/components/schemas/Money'
+        description: Any additional fees associated with the delivery, which could include service fees, handling fees, etc.
+      total:
+        $ref: '#/components/schemas/Money'
+        description: The final total amount including all deductions charged to the customer.
+      pay:
+        $ref: '#/components/schemas/Money'
+        description: The amount paid to the courier for completing the delivery (without tips).
+      tips:
+        $ref: '#/components/schemas/Money'

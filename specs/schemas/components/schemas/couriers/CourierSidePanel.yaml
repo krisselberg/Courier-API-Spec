@@ -1,0 +1,29 @@
+type: object
+properties:
+  first_name:
+    type: string
+    description: The first name of the courier.
+  current_node:
+    type: string
+    description: The current node the courier is connected to.
+  available_nodes:
+    type: array
+    description: The list of nodes available for the courier to connect to.
+    items:
+      type: string
+  availability:
+    type: boolean
+    description: Indicates if the courier is currently available for orders.
+  order_setting:
+    type: string
+    description: Setting determining how the courier handles orders
+    enum:
+      - auto_accept
+      - auto_reject
+      - manual
+required:
+  - first_name
+  - current_node
+  - available_nodes
+  - availability
+  - order_setting

@@ -6,8 +6,8 @@ properties:
     type: string
   customer_name:
     type: string
-  merchant_name:
-    type: string
+  merchant:
+    $ref: '#/components/schemas/Merchant'
   order_date:
     type: string
     format: date-time
