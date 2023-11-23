@@ -1,20 +1,14 @@
-summary: Update courier's general settings
-operationId: updateCourierGeneralSettings
-requestBody:
-  $ref: '#/components/requestBodies/UpdateCourierGeneralSettings'
+summary: Retrieve courier's general settings
+operationId: getCourierGeneralSettings
 responses:
   '200':
-    description: Settings updated successfully
+    description: Successfully retrieved the general settings
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            message:
-              type: string
-              example: 'Settings updated successfully'
+          $ref: '#/components/schemas/CourierGeneralSettings'
   '400':
-    description: Bad request (e.g., invalid data)
+    description: Bad request (e.g., invalid request format)
     content:
       application/json:
         schema:

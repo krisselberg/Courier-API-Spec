@@ -1,7 +1,5 @@
 summary: Begin authentication with a third-party provider
-operationId: authInitiate
-tags:
-  - Couriers Authentication
+operationId: authRedirect
 parameters:
   - name: provider
     in: path

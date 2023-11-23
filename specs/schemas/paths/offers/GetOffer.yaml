@@ -1,0 +1,28 @@
+summary: Fetch a specific offer by its identifier
+operationId: getOffer
+parameters:
+  - name: offer_id
+    in: path
+    description: Unique identifier for the offer
+    required: true
+    schema:
+      type: string
+responses:
+  '200':
+    description: Successfully fetched the offer
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Offer'
+  '404':
+    description: Offer not found with the provided identifier
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

@@ -8,9 +8,9 @@ parameters:
     schema:
       type: string
       enum: [Google, Apple]  # Add other providers as needed
-  - name: token
+  - name: code
     in: query
-    description: Token or code provided by the third-party provider to fetch user details
+    description: Code or token provided by the third-party provider to fetch user details
     required: true
     schema:
       type: string

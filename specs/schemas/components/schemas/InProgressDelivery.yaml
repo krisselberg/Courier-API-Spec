@@ -2,7 +2,7 @@ title: InProgressDelivery
 type: object
 description: Using [Uber Direct](https://developer.uber.com/docs/deliveries/api-reference/daas#tag/Delivery/paths/~1customers~1%7Bcustomer_id%7D~1deliveries/post) as reference
 properties:
-  id:
+  delivery_id:
     type: string
   order_id:
     type: string
@@ -37,32 +37,10 @@ properties:
     type: integer
   kind:
     type: string
-  manifest:
-    type: object
-    properties:
-      reference:
-        type: string
-      description:
-        type: string
-      total_value:
-        type: integer
-  manifest_items:
-    type: object
-    properties:
-      name:
-        type: string
-      quantity:
-        type: integer
-      size:
-        type: string
-      dimensions:
-        $ref: '#/components/schemas/primitives/Dimensions'
-      price:
-        type: integer
-      must_be_upright:
-        type: boolean
-      weight:
-        type: integer
+  items:
+      type: array
+      items:
+        $ref: '#/components/schemas/Item'
   pickup:
     $ref: '#/components/schemas/EndpointDetails'
   pickup_deadline:
@@ -75,7 +53,7 @@ properties:
     type: string
   status:
     type: string
-    enum: [scheduled, in_progress, completed, cancelled] # from Argyle API
+    enum: [picked_up, dropped_off, cancelled]
     description: Current state of the gig assignment
   tip:
     type: integer

@@ -1,0 +1,40 @@
+summary: Contact the customer associated with a delivery via Matrix
+operationId: contactCustomer
+parameters:
+  - name: delivery_id
+    in: path
+    required: true
+    description: The unique identifier of the delivery for which the customer will be contacted.
+    schema:
+      type: string
+requestBody:
+  $ref: '#/components/requestBodies/ContactCustomer'
+responses:
+  '200':
+    description: Customer contacted successfully via Matrix.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Message sent to the customer successfully via Matrix.'
+  '400':
+    description: Bad request (e.g., invalid delivery_id or Matrix details).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Delivery not found or Matrix room not found with the provided identifier.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error, possibly in communication with the Matrix server.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

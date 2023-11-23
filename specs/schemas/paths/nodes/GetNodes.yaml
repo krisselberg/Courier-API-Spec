@@ -1,0 +1,23 @@
+summary: Retrieve a list of available nodes
+operationId: getNodes
+responses:
+  '200':
+    description: Successfully retrieved the list of nodes
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+  '400':
+    description: Bad request (e.g., invalid query parameters)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

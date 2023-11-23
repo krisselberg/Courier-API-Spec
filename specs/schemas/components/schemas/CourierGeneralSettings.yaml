@@ -1,0 +1,116 @@
+CourierGeneralSettings:
+  type: object
+  properties:
+    delivery_polygon:
+      type: array
+      description: An array of coordinates defining the polygonal area the courier is willing to cover for deliveries.
+      items:
+        type: object
+        properties:
+          latitude:
+            type: number
+            format: double
+          longitude:
+            type: number
+            format: double
+    vehicle_type:
+      type: string
+      description: Specifies the type of vehicle the courier uses.
+      enum:
+        - bicycle
+        - motorcycle
+        - car
+        - scooter
+        - on_foot
+    preferred_areas:
+      type: array
+      description: Specific neighborhoods or areas the courier prefers for deliveries.
+      items:
+        type: string
+    shift_availability:
+      type: array
+      description: Days and hours the courier is available for shifts, including break times.
+      items:
+        type: object
+        properties:
+          day:
+            type: string
+            enum: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+          start_time:
+            type: string
+            format: time
+          end_time:
+            type: string
+            format: time
+          breaks:
+            type: array
+            items:
+              type: object
+              properties:
+                start_time:
+                  type: string
+                  format: time
+                end_time:
+                  type: string
+                  format: time
+    order_preferences:
+      type: array
+      description: Order sizes the courier is willing to deliver.
+      items:
+        type: string
+        enum:
+          - small_orders
+          - medium_orders
+          - large_orders
+    food_preference:
+      type: array
+      description: Types of food the courier prefers to deliver.
+      items:
+        type: string
+        enum: [hot, cold, fragile]
+    earnings_goals:
+      type: object
+      properties:
+        daily:
+          type: number
+        weekly:
+          type: number
+    delivery_speed:
+      type: string
+      enum: [regular, rush]
+    restaurant_types:
+      type: array
+      description: Types of restaurants the courier prefers.
+      items:
+        type: string
+        enum: [local, chain, black_owned, women_owned, franchise, upscale, fast_casual, food_trucks, vegan_vegetarian]
+    cuisine_types:
+      type: array
+      description: Types of cuisine the courier prefers to deliver.
+      items:
+        type: string
+        enum: [american, italian, mexican, chinese, japanese, indian, mediterranean, thai, french, korean, vietnamese, middle_eastern, african, caribbean]
+    preferred_restaurant_partners:
+      type: array
+      description: List of favorite restaurants for the courier.
+      items:
+        type: string
+    specific_food_type_preferences:
+      type: array
+      description: Specific food type preferences for delivery.
+      items:
+        type: string
+        enum: [vegan, vegetarian, halal, kosher, organic, no_alcohol]
+    pay_rate:
+      type: object
+      properties:
+        hourly_rate:
+          type: number
+        per_delivery_rate:
+          type: number
+        distance_based_rate:
+          type: number
+        surge_pricing_preference:
+          type: boolean
+        minimum_earnings_guarantee:
+          type: number

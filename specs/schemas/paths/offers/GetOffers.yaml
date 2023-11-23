@@ -1,5 +1,5 @@
-summary: Fetch orders with advanced filtering and sorting
-operationId: getOrders
+summary: Fetch offers with advanced filtering and sorting
+operationId: getOffers
 parameters:
   - name: sortBy
     in: query
@@ -39,7 +39,7 @@ responses:
             orders:
               type: array
               items:
-                $ref: '#/components/schemas/Order'
+                $ref: '#/components/schemas/Offer'
   '404':
     description: No orders found for the provided criteria
     content:

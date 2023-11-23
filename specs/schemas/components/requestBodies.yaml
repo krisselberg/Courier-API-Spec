@@ -1,28 +1,32 @@
-# couriers
-MigrateCourierAccount:
-    $ref: './requestBodies/couriers/MigrateCourierAccount.yaml'
+# deliveries
+ContactCustomer:
+    $ref: './requestBodies/deliveries/ContactCustomer.yaml'
+
+# offers
+UpdateOffer:
+    $ref: './requestBodies/offers/UpdateOffer.yaml'
+
+# auth
+SignUp:
+    $ref: './requestBodies/auth/SignUp.yaml'
 
 Logout:
-    $ref: './requestBodies/couriers/Logout.yaml'
+    $ref: './requestBodies/auth/Logout.yaml'
 
 Login:
-    $ref: './requestBodies/couriers/Login.yaml'
-
-PasswordResetRequest:
-    $ref: './requestBodies/couriers/PasswordResetRequest.yaml'
-
-UpdateCourierSettings:
-    $ref: './requestBodies/couriers/UpdateCourierSettings.yaml'
+    $ref: './requestBodies/auth/Login.yaml'
 
 PasswordReset:
-    $ref: './requestBodies/couriers/PasswordReset.yaml'
+    $ref: './requestBodies/auth/PasswordReset.yaml'
 
-# orders
-UpdateOrderStatus: 
-    $ref: './requestBodies/orders/UpdateOrderStatus.yaml'
+# couriers
+UpdateCourierSidePanel:
+    $ref: './requestBodies/couriers/UpdateCourierSidePanel.yaml'
 
-ConfirmDelivery: 
-    $ref: './requestBodies/orders/ConfirmDelivery.yaml'
+UpdateCourierNode:
+    $ref: './requestBodies/couriers/UpdateCourierNode.yaml'
 
-Contact: 
-    $ref: './requestBodies/orders/Contact.yaml'
+UpdateCourierGeneralSettings:
+    $ref: './requestBodies/couriers/UpdateCourierGeneralSettings.yaml'
+
+

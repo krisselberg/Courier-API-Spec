@@ -153,8 +153,8 @@ BarcodeRequirement:
     $ref: './schemas/BarcodeRequirement.yaml'
 DeliverySignatureRequirement:
     $ref: './schemas/DeliverySignatureRequirement.yaml'
-DeliveryItem:
-    $ref: './schemas/DeliveryItem.yaml'
+Item:
+    $ref: './schemas/Item.yaml'
 DeliveryQuote:
     $ref: './schemas/DeliveryQuote.yaml'
 DeliveryFeeComponent:

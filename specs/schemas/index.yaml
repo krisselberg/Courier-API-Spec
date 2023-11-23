@@ -34,6 +34,8 @@ paths:
     get:
       $ref: './paths/couriers/GetCourier.yaml'
   /couriers/general:
+    get:
+      $ref: './paths/couriers/GetCourierGeneralSettings.yaml'
     patch:
       $ref: './paths/couriers/UpdateCourierGeneralSettings.yaml'
   /couriers/availability:
@@ -56,7 +58,7 @@ paths:
   /offers:
     get:
       $ref: './paths/offers/GetOffers.yaml'
-  /offers/{order_id}:
+  /offers/{offer_id}:
     get:
       $ref: './paths/offers/GetOffer.yaml'
     patch:
@@ -75,7 +77,7 @@ paths:
       $ref: './paths/deliveries/UpdateDeliveryStatus.yaml'
   /deliveries/{delivery_id}/merchant-comments/{comment_id}/upvote:
     patch:
-      $ref: './paths/deliveries/UpdateDeliveryStatus.yaml'
+      $ref: './paths/deliveries/UpvoteDeliveryMerchantComment.yaml'
   /deliveries/{delivery_id}/contact-customer:
     post:
       $ref: './paths/deliveries/ContactCustomer.yaml'

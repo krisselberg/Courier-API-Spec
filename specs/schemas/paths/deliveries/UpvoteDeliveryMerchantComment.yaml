@@ -1,0 +1,50 @@
+summary: Upvote a merchant's comment on a delivery
+operationId: upvoteDeliveryMerchantComment
+parameters:
+  - name: delivery_id
+    in: path
+    required: true
+    description: The unique identifier of the delivery associated with the comment.
+    schema:
+      type: string
+  - name: comment_id
+    in: path
+    required: true
+    description: The unique identifier of the merchant's comment to be upvoted.
+    schema:
+      type: string
+responses:
+  '200':
+    description: Comment upvoted successfully.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Comment upvoted successfully.'
+  '400':
+    description: Bad request (e.g., invalid delivery_id or comment_id).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Delivery or comment not found with the provided identifiers.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '409':
+    description: Conflict (e.g., trying to upvote a comment that's already been upvoted by the user).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

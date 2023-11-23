@@ -1,0 +1,16 @@
+description: Payload for updating offer status.
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        order_status:
+          type: string
+          enum: [accepted, rejected, cancelled, pending]
+          description: The new status to be applied to the offer.
+        comments:
+          type: string
+          description: Optional comments or notes regarding the status update.
+      required:
+        - order_status

@@ -2,7 +2,7 @@ title: Completed Delivery
 type: object
 description: A delivery with obfuscated endpoint details for dropoff using [Uber Direct](https://developer.uber.com/docs/deliveries/api-reference/daas#tag/Delivery/paths/~1customers~1%7Bcustomer_id%7D~1deliveries/post) as reference
 properties:
-  id:
+  delivery_id:
     type: string
   order_id:
     type: string
@@ -17,7 +17,7 @@ properties:
     description: "The merchant's contact phone number for queries related to the delivery."
   status:
     type: string
-    enum: [scheduled, in_progress, completed, cancelled] # from Argyle API
+    enum: [picked_up, dropped_off, cancelled]
   created_at:
     type: string
     format: date-time
@@ -48,7 +48,7 @@ properties:
   items:
       type: array
       items:
-        $ref: '#/components/schemas/DeliveryItem'
+        $ref: '#/components/schemas/Item'
   undeliverable_action:
     type: string
     description: This denotes the course of action to take if the delivery cannot be completed. For instance, it could specify whether the item should be returned, left with a neighbor, or if another delivery attempt should be made.

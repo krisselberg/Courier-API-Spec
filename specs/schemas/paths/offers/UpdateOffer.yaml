@@ -1,0 +1,40 @@
+summary: Update the status of a specific offer
+operationId: updateOfferStatus
+parameters:
+  - name: offer_id
+    in: path
+    required: true
+    description: The unique identifier for the offer to be updated.
+    schema:
+      type: string
+requestBody:
+  $ref: '#/components/requestBodies/UpdateOffer'
+responses:
+  '200':
+    description: Offer status updated successfully.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Offer status updated successfully.'
+  '400':
+    description: Bad request (e.g., invalid status value, missing offer_id)
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Offer not found with the provided identifier.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

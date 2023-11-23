@@ -1,0 +1,54 @@
+summary: Update the status of a specific delivery
+operationId: updateDeliveryStatus
+parameters:
+  - name: delivery_id
+    in: path
+    required: true
+    description: The unique identifier for the delivery whose status is to be updated.
+    schema:
+      type: string
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          delivery_status:
+            type: string
+            description: The new status of the delivery.
+            enum:
+              - picked_up
+              - dropped_off
+              - cancelled
+        required:
+          - delivery_status
+responses:
+  '200':
+    description: Delivery status updated successfully.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Delivery status updated successfully.'
+  '400':
+    description: Bad request (e.g., invalid status value or missing delivery_id).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Delivery not found with the provided identifier.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

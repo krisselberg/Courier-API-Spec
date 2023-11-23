@@ -1,0 +1,29 @@
+description: Payload required to contact a customer via Matrix
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        matrix_room_id:
+          type: string
+          description: The Matrix room identifier where the courier will send the message.
+        matrix_event_type:
+          type: string
+          description: The type of event to send, typically a m.message for sending messages.
+          example: "m.room.message"
+        message_content:
+          type: object
+          description: The content of the message to be sent.
+          properties:
+            msgtype:
+              type: string
+              description: The Matrix message type, e.g., m.text for text messages.
+              example: "m.text"
+            body:
+              type: string
+              description: The body of the message.
+      required:
+        - matrix_room_id
+        - matrix_event_type
+        - message_content

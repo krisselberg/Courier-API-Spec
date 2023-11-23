@@ -5,8 +5,8 @@ content:
     schema:
       type: object
       properties:
-        Token:
+        token:
           type: string
           description: Authorization token or session identifier of the courier
       required:
-        - Token
+        - token

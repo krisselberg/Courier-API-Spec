@@ -1,7 +1,7 @@
-summary: Migrate a courier's account to another node
-operationId: migrateAccount
+summary: Update a courier's account to another node
+operationId: updateCourierNode
 requestBody:
-  $ref: '#/components/requestBodies/MigrateCourierAccount.yaml'
+  $ref: '#/components/requestBodies/UpdateCourierNode.yaml'
 responses:
   '200':
     description: Account migration successful

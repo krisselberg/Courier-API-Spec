@@ -1,12 +1,12 @@
-summary: Create a new courier
-operationId: createCourier
+summary: Sign up a new courier
+operationId: signUp
 requestBody:
   description: Courier information to be added
   required: true
   content:
     application/json:
       schema:
-        $ref: '#/components/requestBodies/CreateCourier'
+        $ref: '#/components/requestBodies/SignUp'
 responses:
   '201':
     description: Courier successfully created
