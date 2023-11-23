@@ -1,7 +1,7 @@
 summary: Log in a courier
 operationId: login
 requestBody:
-  $ref: '#/components/requestBodies/Login.yaml'
+  $ref: '#/components/requestBodies/Login'
 responses:
   '200':
     description: Login successful

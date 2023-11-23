@@ -1,7 +1,7 @@
 summary: Update a courier's account to another node
 operationId: updateCourierNode
 requestBody:
-  $ref: '#/components/requestBodies/UpdateCourierNode.yaml'
+  $ref: '#/components/requestBodies/UpdateCourierNode'
 responses:
   '200':
     description: Account migration successful

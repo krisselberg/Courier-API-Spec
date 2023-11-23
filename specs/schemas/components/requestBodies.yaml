@@ -7,8 +7,8 @@ UpdateOffer:
     $ref: './requestBodies/offers/UpdateOffer.yaml'
 
 # auth
-SignUp:
-    $ref: './requestBodies/auth/SignUp.yaml'
+Signup:
+    $ref: './requestBodies/auth/Signup.yaml'
 
 Logout:
     $ref: './requestBodies/auth/Logout.yaml'

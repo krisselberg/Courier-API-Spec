@@ -1,7 +1,7 @@
 summary: Log out a courier
 operationId: logout
 requestBody:
-  $ref: '#/components/requestBodies/Logout.yaml'
+  $ref: '#/components/requestBodies/Logout'
 responses:
   '200':
     description: Logout successful

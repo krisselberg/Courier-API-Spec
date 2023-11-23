@@ -11,7 +11,7 @@ security:
 paths:
   /auth/signup:
     post:
-      $ref: './paths/auth/SignUp.yaml'
+      $ref: './paths/auth/Signup.yaml'
   /auth/login:
     post:
       $ref: './paths/auth/Login.yaml'
