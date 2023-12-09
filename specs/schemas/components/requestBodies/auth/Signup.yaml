@@ -11,6 +11,10 @@ content:
         password:
           type: string
           format: password
+        phone_number:  
+          type: string
+          format: phone
+          description: User's phone number for sign up purposes.
         # TODO: add courier preferences to sign up screen
         # courier_details:
         #   allOf:
@@ -20,5 +24,5 @@ content:
           type: boolean
           description: Whether to remember the user's session for two weeks after sign-up.
           default: false
-      required:
-        - courier_details
+      # required:
+      #   - courier_details
