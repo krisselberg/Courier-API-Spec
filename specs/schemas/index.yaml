@@ -47,11 +47,17 @@ paths:
   /couriers/node:
     patch:
       $ref: './paths/couriers/UpdateCourierNode.yaml'
+  /couriers/nodes:
+    get:
+      $ref: './paths/couriers/GetCourierNodes.yaml'
+    post:
+      $ref: './paths/couriers/UpdateCourierNodes.yaml'
   /couriers/side-panel:
     get:
       $ref: './paths/couriers/GetCourierSidePanel.yaml'
     patch:
       $ref: './paths/couriers/UpdateCourierSidePanel.yaml'
+  # WARNING: The /nodes endpoint should be placed in a separate central API so nodes cannot censor other nodes from users
   /nodes:
     get:
       $ref: './paths/nodes/GetNodes.yaml'

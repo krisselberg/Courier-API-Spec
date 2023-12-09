@@ -1,0 +1,35 @@
+summary: Retrieve all nodes a courier has signed up for
+operationId: getCourierNodes
+responses:
+  '200':
+    description: Successfully retrieved the list of nodes for the courier.
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+  '400':
+    description: Bad request (e.g., malformed request).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized access (e.g., not logged in as a courier).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Courier not found.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

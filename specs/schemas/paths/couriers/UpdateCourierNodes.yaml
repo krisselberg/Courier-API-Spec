@@ -1,0 +1,48 @@
+summary: Update nodes information for a courier
+operationId: updateCourierNodes
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          nodes:
+            type: array
+            items:
+              $ref: '#/components/schemas/Node'
+responses:
+  '200':
+    description: Successfully updated the nodes for the courier.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Nodes updated successfully.
+  '400':
+    description: Bad request (e.g., malformed request data).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized access (e.g., not logged in as a courier).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Courier not found.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
