@@ -75,12 +75,17 @@ paths:
   /deliveries/{delivery_id}/status:
     patch:
       $ref: './paths/deliveries/UpdateDeliveryStatus.yaml'
-  /deliveries/{delivery_id}/merchant-comments/{comment_id}/upvote:
-    patch:
-      $ref: './paths/deliveries/UpvoteDeliveryMerchantComment.yaml'
   /deliveries/{delivery_id}/contact-customer:
     post:
       $ref: './paths/deliveries/ContactCustomer.yaml'
+  /locations/{location_id}/comments:
+    get:
+      $ref: './paths/locations/GetLocationComments.yaml'
+    post:
+      $ref: './paths/locations/CreateLocationComments.yaml'
+  /locations/{location_id}/comments/{comment_id}/upvote:
+    patch:
+      $ref: './paths/locations/UpvoteLocationComment.yaml'
   /earnings:
     get:
       $ref: './paths/earnings/GetEarnings.yaml'

@@ -1,10 +1,10 @@
-summary: Upvote a merchant's comment on a delivery
-operationId: upvoteDeliveryMerchantComment
+summary: Upvote a comment on a location
+operationId: upvoteLocationComment
 parameters:
-  - name: delivery_id
+  - name: location_id
     in: path
     required: true
-    description: The unique identifier of the delivery associated with the comment.
+    description: The unique identifier of the location associated with the comment.
     schema:
       type: string
   - name: comment_id
@@ -25,13 +25,13 @@ responses:
               type: string
               example: 'Comment upvoted successfully.'
   '400':
-    description: Bad request (e.g., invalid delivery_id or comment_id).
+    description: Bad request (e.g., invalid location_id or comment_id).
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '404':
-    description: Delivery or comment not found with the provided identifiers.
+    description: Location or comment not found with the provided identifiers.
     content:
       application/json:
         schema:

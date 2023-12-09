@@ -1,0 +1,36 @@
+summary: Retrieve comments for a specific location
+operationId: getLocationComments
+parameters:
+  - name: location_id
+    in: path
+    required: true
+    description: The unique identifier for the location whose comments are to be retrieved.
+    schema:
+      type: string
+responses:
+  '200':
+    description: Successfully retrieved the list of comments for the location.
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+  '400':
+    description: Bad request (e.g., malformed location_id).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Location not found or no comments found for the location.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

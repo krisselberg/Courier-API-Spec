@@ -2,17 +2,19 @@ title: Location
 description: provides details about a physical location
 type: object
 properties: 
-  addressLine1:
+  location_id:
+    type: string
+  address_line_1:
     description: Fields that start with address_line provide the address's most specific details, like street number, street name, and building name. They do not provide less specific details like city, state/province, or country (these details are provided in other fields).
     type: string
-  addressLine2:
+  address_line_2:
     description: The second line of the address, if any.
     type: string
   locality:
     description: The city or town of the address
     type: string
-  postalCode:
+  postal_code:
     description: The address's postal code. For a full list of field meanings by country.
     type: string
-  countryCode:
+  country_code:
     $ref: '#/components/schemas/CountryCode'

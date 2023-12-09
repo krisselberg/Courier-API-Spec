@@ -1,0 +1,46 @@
+summary: Create a comment for a specific location
+operationId: createLocationComment
+parameters:
+  - name: location_id
+    in: path
+    required: true
+    description: The unique identifier for the location where the comment is to be added.
+    schema:
+      type: string
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - comment
+        properties:
+          comment:
+            type: string
+            description: The text of the comment to be added.
+responses:
+  '201':
+    description: Successfully created the comment.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Comment'
+  '400':
+    description: Bad request (e.g., malformed location_id, invalid comment data).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Location not found.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
