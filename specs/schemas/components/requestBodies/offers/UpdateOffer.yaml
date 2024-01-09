@@ -5,7 +5,7 @@ content:
     schema:
       type: object
       properties:
-        order_status:
+        offer_status:
           type: string
           enum: [accepted, rejected, cancelled, pending]
           description: The new status to be applied to the offer.

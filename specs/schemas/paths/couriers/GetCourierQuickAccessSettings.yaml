@@ -1,20 +1,14 @@
-summary: Update the side panel settings for the current courier
-operationId: updateCourierSidePanel
-requestBody:
-  $ref: '#/components/requestBodies/UpdateCourierSidePanel'
+summary: Retrieve the quick-access settings that are frequently modified for the current courier
+operationId: getCourierQuickAccessSettings
 responses:
   '200':
-    description: Side panel settings updated successfully
+    description: Successfully retrieved the side panel information
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            message:
-              type: string
-              example: 'Side panel settings updated successfully'
+          $ref: '#/components/schemas/CourierQuickAccessSettings'
   '400':
-    description: Bad request (e.g., invalid data)
+    description: Bad request (e.g., invalid request parameters)
     content:
       application/json:
         schema:

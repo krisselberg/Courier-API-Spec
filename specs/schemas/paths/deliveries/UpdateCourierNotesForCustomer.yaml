@@ -1,0 +1,52 @@
+summary: Update courier notes for a specific delivery
+operationId: updateCourierNotesToCustomer
+parameters:
+  - name: delivery_id
+    in: path
+    required: true
+    description: The unique identifier for the delivery to which the notes are to be added.
+    schema:
+      type: string
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          courier_notes:
+            type: array
+            items:
+              type: string
+            description: An array of notes from the courier to the customer regarding the delivery.
+        required:
+          - courier_notes
+responses:
+  '200':
+    description: Courier notes updated successfully.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Courier notes updated successfully.'
+  '400':
+    description: Bad request (e.g., invalid notes format or missing delivery_id).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Delivery not found with the provided identifier.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

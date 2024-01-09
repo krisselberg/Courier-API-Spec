@@ -49,10 +49,10 @@ CompletedDelivery:
 # couriers
 Courier:
     $ref: './schemas/couriers/Courier.yaml'
-CourierSidePanel:
-    $ref: './schemas/couriers/CourierSidePanel.yaml'
-CourierGeneralSettings:
-    $ref: './schemas/couriers/CourierGeneralSettings.yaml'
+CourierQuickAccessSettings:
+    $ref: './schemas/couriers/CourierQuickAccessSettings.yaml'
+CourierFullSettings:
+    $ref: './schemas/couriers/CourierFullSettings.yaml'
 
 # earnings
 EarningsRecord:

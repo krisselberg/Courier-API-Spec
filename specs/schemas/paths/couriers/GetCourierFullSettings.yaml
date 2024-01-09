@@ -1,12 +1,12 @@
 summary: Retrieve courier's general settings
-operationId: getCourierGeneralSettings
+operationId: getCourierFullSettings
 responses:
   '200':
     description: Successfully retrieved the general settings
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/CourierGeneralSettings'
+          $ref: '#/components/schemas/CourierFullSettings'
   '400':
     description: Bad request (e.g., invalid request format)
     content:

@@ -1,0 +1,54 @@
+summary: Report an Issue with a Delivery
+description: >
+  Allows couriers to report specific issues related to a delivery. 
+  This can include wrong address, connectivity issues, or confirmation of order delivery.
+operationId: reportDeliveryIssue
+parameters:
+  - name: delivery_id
+    in: path
+    required: true
+    description: The unique identifier for the delivery whose status is to be updated.
+    schema:
+      type: string
+requestBody:
+  description: Issue details for the delivery
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          issue_type:
+            type: string
+            enum: 
+              - Wrong address
+              - No Internet / No GPS / No Signal
+              - Order Handed to Customer
+            description: The type of issue being reported
+        required:
+          - issue_type
+responses:
+  '200':
+    description: Issue reported successfully
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/SuccessResponse'
+  '400':
+    description: Bad request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'
+  '500':
+    description: Internal Server Error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

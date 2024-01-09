@@ -17,10 +17,6 @@ content:
           type: string
           format: phone
           description: User's phone number for login purposes.
-        remember_me:
-          type: boolean
-          description: Whether to remember the user's session for two weeks.
-          default: false
       required:
+        - email
         - password
-        - remember_me

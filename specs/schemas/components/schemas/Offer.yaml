@@ -2,7 +2,7 @@ title: Offer
 type: object
 description: Schema definition for an Offer prior to being picked up by a driver and a Delivery being created.
 properties:
-  order_id:
+  offer_id:
     type: string
   customer_name:
     type: string

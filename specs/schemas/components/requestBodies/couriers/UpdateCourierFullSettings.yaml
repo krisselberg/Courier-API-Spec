@@ -1,4 +1,4 @@
-description: Courier's general settings
+description: Courier's full settings
 required: true
 content:
   application/json:

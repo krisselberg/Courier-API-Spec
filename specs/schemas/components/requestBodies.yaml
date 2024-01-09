@@ -20,12 +20,9 @@ PasswordReset:
     $ref: './requestBodies/auth/PasswordReset.yaml'
 
 # couriers
-UpdateCourierSidePanel:
-    $ref: './requestBodies/couriers/UpdateCourierSidePanel.yaml'
-
 UpdateCourierNode:
     $ref: './requestBodies/couriers/UpdateCourierNode.yaml'
 
-UpdateCourierGeneralSettings:
-    $ref: './requestBodies/couriers/UpdateCourierGeneralSettings.yaml'
+UpdateCourierFullSettings:
+    $ref: './requestBodies/couriers/UpdateCourierFullSettings.yaml'
 

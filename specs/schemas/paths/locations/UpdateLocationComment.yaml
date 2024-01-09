@@ -1,0 +1,52 @@
+summary: Modify an existing comment for a specific location
+operationId: modifyLocationComment
+parameters:
+  - name: location_id
+    in: path
+    required: true
+    description: The unique identifier for the location associated with the comment.
+    schema:
+      type: string
+  - name: comment_id
+    in: path
+    required: true
+    description: The unique identifier of the comment to be modified.
+    schema:
+      type: string
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - comment
+        properties:
+          comment:
+            type: string
+            description: The updated text of the comment.
+responses:
+  '200':
+    description: Successfully modified the comment.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Comment'
+  '400':
+    description: Bad request (e.g., malformed location_id or comment_id, invalid comment data).
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Location or comment not found.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '500':
+    description: Unexpected server error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'

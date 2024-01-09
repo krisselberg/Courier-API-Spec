@@ -1,14 +1,20 @@
-summary: Retrieve the side panel information for the current courier
-operationId: getCourierSidePanel
+summary: Update courier's full settings
+operationId: updateCourierFullSettings
+requestBody:
+  $ref: '#/components/requestBodies/UpdateCourierFullSettings'
 responses:
   '200':
-    description: Successfully retrieved the side panel information
+    description: Settings updated successfully
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/CourierSidePanel'
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Settings updated successfully'
   '400':
-    description: Bad request (e.g., invalid request parameters)
+    description: Bad request (e.g., invalid data)
     content:
       application/json:
         schema:

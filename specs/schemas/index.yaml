@@ -33,11 +33,11 @@ paths:
   /couriers/me:
     get:
       $ref: './paths/couriers/GetCourier.yaml'
-  /couriers/general:
+  /couriers/full-settings:
     get:
-      $ref: './paths/couriers/GetCourierGeneralSettings.yaml'
+      $ref: './paths/couriers/GetCourierFullSettings.yaml'
     patch:
-      $ref: './paths/couriers/UpdateCourierGeneralSettings.yaml'
+      $ref: './paths/couriers/UpdateCourierFullSettings.yaml'
   /couriers/availability:
     patch:
       $ref: './paths/couriers/UpdateCourierAvailability.yaml'
@@ -52,11 +52,9 @@ paths:
       $ref: './paths/couriers/GetCourierNodes.yaml'
     post:
       $ref: './paths/couriers/UpdateCourierNodes.yaml'
-  /couriers/side-panel:
+  /couriers/quick-access-settings:
     get:
-      $ref: './paths/couriers/GetCourierSidePanel.yaml'
-    patch:
-      $ref: './paths/couriers/UpdateCourierSidePanel.yaml'
+      $ref: './paths/couriers/GetCourierQuickAccessSettings.yaml'
   # WARNING: The /nodes endpoint should be placed in a separate central API so nodes cannot censor other nodes from users
   /nodes:
     get:
@@ -84,11 +82,20 @@ paths:
   /deliveries/{delivery_id}/contact-customer:
     post:
       $ref: './paths/deliveries/ContactCustomer.yaml'
+  /deliveries/{delivery_id}/courier-notes-for-customer:
+    post:
+      $ref: './paths/deliveries/UpdateCourierNotesForCustomer.yaml'
+  /deliveries/{delivery_id}/report-issue:
+    post:
+      $ref: './paths/deliveries/ReportIssue.yaml'
   /locations/{location_id}/comments:
     get:
       $ref: './paths/locations/GetLocationComments.yaml'
     post:
       $ref: './paths/locations/CreateLocationComments.yaml'
+  /locations/{location_id}/comments/{comment_id}:
+    patch:
+      $ref: './paths/locations/UpdateLocationComment.yaml'
   /locations/{location_id}/comments/{comment_id}/upvote:
     patch:
       $ref: './paths/locations/UpvoteLocationComment.yaml'
